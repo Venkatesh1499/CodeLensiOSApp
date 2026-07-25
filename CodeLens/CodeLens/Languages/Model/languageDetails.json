@@ -1,0 +1,69 @@
+
+[
+    {
+        "name": "Python",
+        "image": "Python",
+        "isAvailable": true
+    },
+    {
+        "name": "Swift",
+        "image": "Swift",
+        "isAvailable": false
+    },
+    {
+        "name": "Java",
+        "image": "Java",
+        "isAvailable": false
+    },
+    {
+        "name": "JavaScript",
+        "image": "Js",
+        "isAvailable": false
+    },
+    {
+        "name": "TypeScript",
+        "image": "Typescript",
+        "isAvailable": false
+    },
+    {
+        "name": "Kotlin",
+        "image": "Kotlin",
+        "isAvailable": false
+    },
+    {
+        "name": "Go",
+        "image": "Go",
+        "isAvailable": false
+    },
+    {
+        "name": "Rust",
+        "image": "Rust",
+        "isAvailable": false
+    },
+    {
+        "name": "Ruby",
+        "image": "Ruby",
+        "isAvailable": false
+    },
+    {
+        "name": "C++",
+        "image": "C++",
+        "isAvailable": false
+    },
+    {
+        "name": "TypeScript",
+        "image": "Typescript",
+        "isAvailable": false
+    },
+    {
+        "name": "Kotlin",
+        "image": "Kotlin",
+        "isAvailable": false
+    },
+    {
+        "name": "Go",
+        "image": "Go",
+        "isAvailable": false
+    }
+]
+

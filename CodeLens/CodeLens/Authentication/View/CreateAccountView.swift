@@ -11,8 +11,12 @@ struct AuthView: View {
     
     var body: some View {
         VStack {
-            if AuthenticationManager.shared.currentUserID != nil {
-                EmptyView()
+            if AuthenticationManager.shared.isUserLoggedIn {
+                if true {
+                    LanguageSelectionView()
+                } else {
+                    // main code view will come here
+                }
             } else {
                 LoginView()
             }

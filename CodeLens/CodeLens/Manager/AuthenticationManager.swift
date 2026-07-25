@@ -15,8 +15,12 @@ class AuthenticationManager {
     
     private init() {}
     
-    var currentUserID: String? {
-        Auth.auth().currentUser?.displayName
+    var isUserLoggedIn: Bool {
+        return currentUserID != nil
+    }
+    
+    var currentUserID: FirebaseAuth.User? {
+        Auth.auth().currentUser
     }
     
     func signUp(name: String, email: String, password: String, completion: @escaping ((Error?, String?)->Void)) {
@@ -69,6 +73,21 @@ class AuthenticationManager {
             try Auth.auth().signOut()
         } catch let error {
             print(error.localizedDescription)
+        }
+    }
+    
+    // TODO: - Need to test
+    func deleteUser(completion: @escaping ((Error?, String?) -> Void)) {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        
+        currentUser.delete { error in
+            guard let error = error else {
+                completion(nil, "Successfull")
+                print("Account deleted succesfully")
+                return
+            }
+            
+            completion(error, nil)
         }
     }
     
