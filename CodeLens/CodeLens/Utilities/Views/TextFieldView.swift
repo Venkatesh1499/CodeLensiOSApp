@@ -25,7 +25,10 @@ struct TextFieldView: View {
                 } else {
                     TextField(placeHolder, text: $value)
                 }
-            }.frame(height: 22)
+            }
+            .autocorrectionDisabled(true)
+            .textInputAutocapitalization(.never)
+            .frame(height: 22)
             .padding(.trailing)
             .padding(.leading, 5)
             .padding(.vertical)
