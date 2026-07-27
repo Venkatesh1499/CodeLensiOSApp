@@ -17,12 +17,12 @@
     },
     {
         "name": "JavaScript",
-        "image": "Js",
+        "image": "JavaScript",
         "isAvailable": false
     },
     {
         "name": "TypeScript",
-        "image": "Typescript",
+        "image": "TypeScript",
         "isAvailable": false
     },
     {
@@ -52,7 +52,7 @@
     },
     {
         "name": "TypeScript",
-        "image": "Typescript",
+        "image": "TypeScript",
         "isAvailable": false
     },
     {

@@ -1,0 +1,11 @@
+//
+//  format.swift
+//  MainCodeArea
+//
+//  Created by Venkatesh Nimmalapudi on 20/07/26.
+//
+
+{
+    "error": null,
+    "formattedCode": "def divide(a, b):\n    return a / b\n"
+}

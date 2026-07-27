@@ -20,5 +20,67 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "287AD5C5-9C91-42EF-AAAB-637852E2B05E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeLens/CodeEditor/View/MainCodeArea.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeLens/Services/APIServiceManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "initiateAPICall(with:requestInput:method:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - c8c902867e8c37bb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "CodeLens.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
+               </Location>
+               <Location
+                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - 4877a83793b369b8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
+                  moduleName = "CodeLens.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

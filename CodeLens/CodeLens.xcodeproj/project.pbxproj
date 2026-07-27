@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1429EF323014C02E009043D9 /* Highlightr in Frameworks */ = {isa = PBXBuildFile; productRef = 1429EF313014C02E009043D9 /* Highlightr */; };
 		14684A123013EFDD005EB840 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 14684A113013EFDD005EB840 /* FirebaseAnalytics */; };
 		14684A143013EFDD005EB840 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 14684A133013EFDD005EB840 /* FirebaseAuth */; };
 		14684A163013EFDD005EB840 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 14684A153013EFDD005EB840 /* FirebaseCrashlytics */; };
@@ -35,6 +36,7 @@
 				14684A123013EFDD005EB840 /* FirebaseAnalytics in Frameworks */,
 				14684A183013EFDD005EB840 /* FirebaseDatabase in Frameworks */,
 				14684A1A3013EFDD005EB840 /* FirebaseFirestore in Frameworks */,
+				1429EF323014C02E009043D9 /* Highlightr in Frameworks */,
 				14684A143013EFDD005EB840 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +85,7 @@
 				14684A153013EFDD005EB840 /* FirebaseCrashlytics */,
 				14684A173013EFDD005EB840 /* FirebaseDatabase */,
 				14684A193013EFDD005EB840 /* FirebaseFirestore */,
+				1429EF313014C02E009043D9 /* Highlightr */,
 			);
 			productName = CodeLens;
 			productReference = 1449DD44300D0E2A0035192C /* CodeLens.app */;
@@ -114,6 +117,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				14684A103013EFDD005EB840 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1429EF303014C02E009043D9 /* XCRemoteSwiftPackageReference "Highlightr" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1449DD45300D0E2A0035192C /* Products */;
@@ -351,6 +355,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1429EF303014C02E009043D9 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raspu/Highlightr";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
 		14684A103013EFDD005EB840 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -362,6 +374,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1429EF313014C02E009043D9 /* Highlightr */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1429EF303014C02E009043D9 /* XCRemoteSwiftPackageReference "Highlightr" */;
+			productName = Highlightr;
+		};
 		14684A113013EFDD005EB840 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 14684A103013EFDD005EB840 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
