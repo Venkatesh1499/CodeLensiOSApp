@@ -1,0 +1,110 @@
+{
+    "review": {
+        "improved_code": "public static double divideNumbers(double a, double b) { if (b == 0) { throw new ArithmeticException(\"Cannot divide by zero\"); } if (a < 0 || b < 0) { throw new IllegalArgumentException(\"Input must be non-negative\"); } return a / b; }",
+        "issues": {
+            "best_practices": [
+                {
+                    "category": "naming conventions",
+                    "description": "The code does not follow Java naming conventions.",
+                    "example_fix": "public static double divideNumbers(double a, double b) { return a / b; }",
+                    "recommendation": "Follow Java naming conventions for method and variable names.",
+                    "severity": "low",
+                    "title": "Follow Java naming conventions"
+                }
+            ],
+            "correctness": [
+                {
+                    "category": "syntax",
+                    "description": "The provided code uses Python syntax instead of Java.",
+                    "example_fix": "public static double divide(double a, double b) { return a / b; }",
+                    "recommendation": "Use Java syntax for the method definition.",
+                    "severity": "critical",
+                    "title": "Invalid Java syntax"
+                },
+                {
+                    "category": "logic",
+                    "description": "The code does not handle division by zero.",
+                    "example_fix": "if (b == 0) { throw new ArithmeticException(\"Cannot divide by zero\"); }",
+                    "recommendation": "Add a check to handle division by zero.",
+                    "severity": "critical",
+                    "title": "Division by zero"
+                },
+                {
+                    "category": "variables",
+                    "description": "The variables a and b are not defined.",
+                    "example_fix": "public static double divide(double a, double b) { return a / b; }",
+                    "recommendation": "Define the variables a and b as method parameters or local variables.",
+                    "severity": "critical",
+                    "title": "Undefined variables"
+                }
+            ],
+            "maintainability": [
+                {
+                    "category": "naming",
+                    "description": "The method name divide is not descriptive.",
+                    "example_fix": "public static double divideNumbers(double a, double b) { return a / b; }",
+                    "recommendation": "Use a more descriptive method name.",
+                    "severity": "medium",
+                    "title": "Method naming"
+                }
+            ],
+            "performance": [
+                {
+                    "category": "performance",
+                    "description": "The code does not have any performance issues.",
+                    "example_fix": "",
+                    "recommendation": "No changes needed.",
+                    "severity": "low",
+                    "title": "No performance issues"
+                }
+            ],
+            "readability": [
+                {
+                    "category": "comments",
+                    "description": "The code does not have any comments.",
+                    "example_fix": "public static double divideNumbers(double a, double b) { // Divide two numbers and return the result. return a / b; }",
+                    "recommendation": "Add comments to explain the purpose of the method.",
+                    "severity": "low",
+                    "title": "Lack of comments"
+                }
+            ],
+            "security": [
+                {
+                    "category": "security",
+                    "description": "The code does not have any security issues.",
+                    "example_fix": "",
+                    "recommendation": "No changes needed.",
+                    "severity": "low",
+                    "title": "No security issues"
+                },
+                {
+                    "category": "input validation",
+                    "description": "The code does not validate the input.",
+                    "example_fix": "if (a < 0 || b < 0) { throw new IllegalArgumentException(\"Input must be non-negative\"); }",
+                    "recommendation": "Add input validation to handle invalid input.",
+                    "severity": "high",
+                    "title": "Input validation"
+                }
+            ],
+            "testing": [
+                {
+                    "category": "testing",
+                    "description": "The code does not have any tests.",
+                    "example_fix": "@Test public void testDivide() { assertEquals(2.0, divideNumbers(4.0, 2.0), 0.01); }",
+                    "recommendation": "Add unit tests to verify the correctness of the method.",
+                    "severity": "high",
+                    "title": "No tests"
+                }
+            ]
+        },
+        "overall_score": 0,
+        "severity": {
+            "critical": 3,
+            "high": 2,
+            "low": 1,
+            "medium": 1
+        },
+        "summary": "The provided code is not valid Java and has several issues."
+    },
+    "success": true
+}

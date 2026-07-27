@@ -1,9 +1,3 @@
-//
-//  Extensions.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 24/07/26.
-//
 import SwiftUI
 
 extension Color {

@@ -9,7 +9,7 @@ struct PrimaryButton: View {
     
     var body: some View {
         Button {
-            print("\(title) tapped")
+            onTapAction()
         } label: {
             HStack {
                 Spacer()

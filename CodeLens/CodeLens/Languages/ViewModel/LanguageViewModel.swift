@@ -5,8 +5,14 @@
 //  Created by Venkatesh Nimmalapudi on 15/07/26.
 //
 import Foundation
+import Combine
 
-class LanguageViewModel {
+class LanguageViewModel: ObservableObject {
+    
+    @Published var selectedLanguage: String = ""
+    @Published var shouldNavigateToCodeEditor: Bool = false
+    
+    var selected = UUID()
     
     var languages: [Language] = []
     
