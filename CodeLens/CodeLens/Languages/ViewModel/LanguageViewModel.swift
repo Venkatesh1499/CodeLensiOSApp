@@ -11,6 +11,7 @@ class LanguageViewModel: ObservableObject {
     
     @Published var selectedLanguage: String = ""
     @Published var shouldNavigateToCodeEditor: Bool = false
+    @Published var shouldShowLogoutPreconfirmation: Bool = false
     
     var selected = UUID()
     

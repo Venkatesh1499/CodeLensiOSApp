@@ -10,7 +10,7 @@ import SwiftUI
 struct GeneralButton: View {
     
     var title: String
-    var color: String = "#6C3BB0"
+    var color: String = "#7C3AED"
     var onTapAction: (() -> Void)
     
     var body: some View {

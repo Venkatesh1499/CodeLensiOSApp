@@ -3,20 +3,15 @@ import SwiftUI
 struct ReviewResultView: View {
     
     @State var shouldNavigateToImporvedCode: Bool = false
+    @State var shouldShowLogoutPreconfirmation: Bool = false
     
+    var language: String
     var codeReviewResponse: ReviewResponse?
     var issues: [String : [CategoryDetails]] = [:]
     
     var body: some View {
         NavigationStack {
             ZStack {
-                //            LinearGradient(colors: [
-                //                Color(hex: "#090F15"),
-                //                Color(hex: "111827"),
-                //                Color(hex: "#141FB2F") //141B2F
-                //            ], startPoint: .topLeading,
-                //                           endPoint: .bottomTrailing)
-                //111827 //151A28
                 Color(hex: "#111827").opacity(0.95)
                     .ignoresSafeArea(edges: .all)
                 
@@ -55,16 +50,25 @@ struct ReviewResultView: View {
                     }.scrollIndicators(.hidden)
                         .edgesIgnoringSafeArea(.bottom)
                     
-                    reviewButton
-                    
                     Spacer()
+                    
+                    reviewButton                        
                 }
                 .padding()
             }
+            .logoutButton(title: "Review Result") {
+                shouldShowLogoutPreconfirmation.toggle()
+            }
+            .popup(isPresented: $shouldShowLogoutPreconfirmation) {
+                LogoutPreConfirmationPopUp {
+                    shouldShowLogoutPreconfirmation.toggle()
+                } onTapCancel: {
+                    shouldShowLogoutPreconfirmation.toggle()
+                }
+            }
             .navigationDestination(isPresented: $shouldNavigateToImporvedCode) {
                 ImprovedCodeView(code: codeReviewResponse?.review.improvedCode ?? "",
-                                 shouldSelectAll: false,
-                                 language: "Python")
+                                 language: language)
             }
         }
     }
@@ -75,13 +79,13 @@ struct ReviewResultView: View {
         } label: {
             HStack(spacing: 15) {
                 Spacer()
-                Image(systemName: "text.document")
+                Image(systemName: "sparkles.2")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 24, height: 24)
                     .foregroundStyle(.white)
                 
-                Text("See improved code")
+                Text("Improved code")
                     .foregroundStyle(.white)
                     .font(.system(size: 18, weight: .medium))
                     .fontWeight(.medium)
@@ -209,7 +213,7 @@ struct DetailsView: View {
 }
 
 #Preview {
-    ReviewResultView(issues: ["performance": [CodeLens.CategoryDetails(title: "Division Operation", category: "performance", description: "The function uses the \'/\' operator for division, which can be slow for large numbers.", exampleFix: "return a // b or import math; return math.fdiv(a, b)", recommendation: "Consider using the \'//\' operator for integer division or the \'math.fdiv\' function for floating-point division.", severity: "low")], "readability": [CodeLens.CategoryDetails(title: "Syntax Error", category: "syntax error", description: "The function is missing a colon at the end of the function definition.", exampleFix: "def divide(a, b):", recommendation: "Add a colon at the end of the function definition.", severity: "high"), CodeLens.CategoryDetails(title: "Code Formatting", category: "code formatting", description: "The code does not follow PEP 8 code formatting conventions.", exampleFix: "Use consistent indentation and spacing.", recommendation: "Format the code according to PEP 8 conventions.", severity: "low")], "maintainability": [CodeLens.CategoryDetails(title: "Function Name", category: "naming convention", description: "The function name \'divide\' is not descriptive and does not follow PEP 8 naming conventions.", exampleFix: "def divide_numbers(a, b):", recommendation: "Rename the function to something more descriptive, such as \'divide_numbers\'.", severity: "medium"), CodeLens.CategoryDetails(title: "Docstring", category: "documentation", description: "The function is missing a docstring, which makes it difficult for others to understand how to use the function.", exampleFix: "\"\"\"Divide two numbers.\n\nArgs:\n    a (int or float): The dividend.\n    b (int or float): The divisor.\n\nReturns:\n    int or float: The quotient.\"\"\"", recommendation: "Add a docstring to the function.", severity: "medium")], "security": [CodeLens.CategoryDetails(title: "Input Validation", category: "input validation", description: "The function does not validate the inputs, which can lead to security vulnerabilities.", exampleFix: "if not isinstance(a, (int, float)) or not isinstance(b, (int, float)): raise TypeError(\'Inputs must be numbers\')", recommendation: "Add input validation to ensure the inputs are valid and secure.", severity: "high")], "correctness": [CodeLens.CategoryDetails(title: "Division by Zero Error", category: "logic bug", description: "The function does not handle division by zero, which will raise a ZeroDivisionError.", exampleFix: "if b == 0: raise ValueError(\'Cannot divide by zero\')", recommendation: "Add a check to handle division by zero.", severity: "critical"), CodeLens.CategoryDetails(title: "Type Error", category: "type error", description: "The function does not check the type of the inputs, which can lead to a TypeError if the inputs are not numbers.", exampleFix: "if not isinstance(a, (int, float)) or not isinstance(b, (int, float)): raise TypeError(\'Inputs must be numbers\')", recommendation: "Add type checking to ensure the inputs are numbers.", severity: "high")], "testing": [CodeLens.CategoryDetails(title: "Unit Tests", category: "unit tests", description: "The function is missing unit tests, which makes it difficult to ensure the function is working correctly.", exampleFix: "import unittest; class TestDivideFunction(unittest.TestCase): def test_divide(self): self.assertEqual(divide(10, 2), 5)", recommendation: "Add unit tests to the function.", severity: "medium")], "best_practices": [CodeLens.CategoryDetails(title: "Error Handling", category: "error handling", description: "The function does not handle errors properly, which can lead to unexpected behavior.", exampleFix: "try: return a / b; except ZeroDivisionError: raise ValueError(\'Cannot divide by zero\'); except TypeError: raise TypeError(\'Inputs must be numbers\')", recommendation: "Add try-except blocks to handle errors and exceptions.", severity: "medium")]])
+    ReviewResultView(language: "Python", issues: ["performance": [CodeLens.CategoryDetails(title: "Division Operation", category: "performance", description: "The function uses the \'/\' operator for division, which can be slow for large numbers.", exampleFix: "return a // b or import math; return math.fdiv(a, b)", recommendation: "Consider using the \'//\' operator for integer division or the \'math.fdiv\' function for floating-point division.", severity: "low")], "readability": [CodeLens.CategoryDetails(title: "Syntax Error", category: "syntax error", description: "The function is missing a colon at the end of the function definition.", exampleFix: "def divide(a, b):", recommendation: "Add a colon at the end of the function definition.", severity: "high"), CodeLens.CategoryDetails(title: "Code Formatting", category: "code formatting", description: "The code does not follow PEP 8 code formatting conventions.", exampleFix: "Use consistent indentation and spacing.", recommendation: "Format the code according to PEP 8 conventions.", severity: "low")], "maintainability": [CodeLens.CategoryDetails(title: "Function Name", category: "naming convention", description: "The function name \'divide\' is not descriptive and does not follow PEP 8 naming conventions.", exampleFix: "def divide_numbers(a, b):", recommendation: "Rename the function to something more descriptive, such as \'divide_numbers\'.", severity: "medium"), CodeLens.CategoryDetails(title: "Docstring", category: "documentation", description: "The function is missing a docstring, which makes it difficult for others to understand how to use the function.", exampleFix: "\"\"\"Divide two numbers.\n\nArgs:\n    a (int or float): The dividend.\n    b (int or float): The divisor.\n\nReturns:\n    int or float: The quotient.\"\"\"", recommendation: "Add a docstring to the function.", severity: "medium")], "security": [CodeLens.CategoryDetails(title: "Input Validation", category: "input validation", description: "The function does not validate the inputs, which can lead to security vulnerabilities.", exampleFix: "if not isinstance(a, (int, float)) or not isinstance(b, (int, float)): raise TypeError(\'Inputs must be numbers\')", recommendation: "Add input validation to ensure the inputs are valid and secure.", severity: "high")], "correctness": [CodeLens.CategoryDetails(title: "Division by Zero Error", category: "logic bug", description: "The function does not handle division by zero, which will raise a ZeroDivisionError.", exampleFix: "if b == 0: raise ValueError(\'Cannot divide by zero\')", recommendation: "Add a check to handle division by zero.", severity: "critical"), CodeLens.CategoryDetails(title: "Type Error", category: "type error", description: "The function does not check the type of the inputs, which can lead to a TypeError if the inputs are not numbers.", exampleFix: "if not isinstance(a, (int, float)) or not isinstance(b, (int, float)): raise TypeError(\'Inputs must be numbers\')", recommendation: "Add type checking to ensure the inputs are numbers.", severity: "high")], "testing": [CodeLens.CategoryDetails(title: "Unit Tests", category: "unit tests", description: "The function is missing unit tests, which makes it difficult to ensure the function is working correctly.", exampleFix: "import unittest; class TestDivideFunction(unittest.TestCase): def test_divide(self): self.assertEqual(divide(10, 2), 5)", recommendation: "Add unit tests to the function.", severity: "medium")], "best_practices": [CodeLens.CategoryDetails(title: "Error Handling", category: "error handling", description: "The function does not handle errors properly, which can lead to unexpected behavior.", exampleFix: "try: return a / b; except ZeroDivisionError: raise ValueError(\'Cannot divide by zero\'); except TypeError: raise TypeError(\'Inputs must be numbers\')", recommendation: "Add try-except blocks to handle errors and exceptions.", severity: "medium")]])
 }
 
 struct IconMappingDetails {

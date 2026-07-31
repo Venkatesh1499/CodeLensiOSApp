@@ -16,7 +16,15 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(hex: "#F8F8FA")
+                Color(hex: "#F3F6FA")
+                LinearGradient(
+                    colors: [
+                        Color(hex: "#0F172A"),
+                        Color(hex: "#1E293B")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
                     .ignoresSafeArea()
                 
                 VStack {
@@ -29,6 +37,7 @@ struct LoginView: View {
                     VStack(spacing: 20) {
                         Text("Login")
                             .font(.system(size: 30, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
                             .padding(.bottom)
                             .multilineTextAlignment(.center)
                         
@@ -48,7 +57,7 @@ struct LoginView: View {
                                 print("Forgot password ?")
                             } label: {
                                 Text("Forgot password ?")
-                                    .foregroundStyle(Color.blue.opacity(0.8))
+                                    .foregroundStyle(Color(hex: "#A78BFA"))
                                     .font(.system(size: 16, weight: .regular, design: .default))
                             }
                         }
@@ -82,14 +91,15 @@ struct SignUpTextView: View {
     var body: some View {
         HStack {
             Text("Don't have an account?")
-                .foregroundStyle(Color.gray)
+//                .foregroundStyle(Color.gray)
+                .foregroundStyle(Color(hex: "#94A3B8"))
                 .font(.system(size: 16, weight: .light, design: .default))
             Button {
                 print("Sign Up clicked")
                 onTapSignUp()
             } label: {
                 Text("Sign Up")
-                    .foregroundStyle(Color.blue)
+                    .foregroundStyle(Color(hex: "#A78BFA"))
                     .font(.system(size: 16, weight: .regular, design: .default))
             }
         }

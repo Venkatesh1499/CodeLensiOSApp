@@ -49,6 +49,7 @@ struct TextFieldView: View {
         }
         .background {
             RoundedRectangle(cornerRadius: 12)
+                .fill(.white)
 //                .stroke draws inside the .strokeBorder draws outside
                 .strokeBorder(
                     Color.gray.opacity(0.9),

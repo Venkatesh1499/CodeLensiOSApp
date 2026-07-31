@@ -1,10 +1,3 @@
-//
-//  CodeEditorViewModel.swift
-//  MainCodeArea
-//
-//  Created by Venkatesh Nimmalapudi on 18/07/26.
-//
-
 import SwiftUI
 import Combine
 
@@ -22,6 +15,9 @@ class CodeEditorViewModel: ObservableObject {
     @Published var shouldNavigateToResultView: Bool = false
     
     @Published var issues: [String : [CategoryDetails]] = [:]
+        
+    @Published var shouldShowError: Bool = false
+    @Published var shouldShowLogoutPreconfirmation: Bool = false
     
     var reviewAPIResponse: ReviewResponse? {
         didSet {
@@ -50,8 +46,7 @@ class CodeEditorViewModel: ObservableObject {
                 self.code += UIPasteboard.general.string ?? ""
             }
         case .format:
-            // TODO: - Need to call ann API to update the UI
-            let request = CodeDetails(language: "python", code: code)
+            let request = CodeDetails(language: selectedLanguage, code: code)
             await initiateFormatting(for: request)
             break
         }
@@ -78,9 +73,9 @@ extension CodeEditorViewModel {
                                                                                               requestInput: input,
                                                                                               method: .post)
             reviewAPIResponse = response
-//            shouldNavigateToResultView.toggle()
             print(response)
         } catch {
+            shouldShowError.toggle()
             print(error.localizedDescription)
         }
     }
@@ -94,6 +89,7 @@ extension CodeEditorViewModel {
             isLoading = false
             handleFormatAPIResponse(response: response)
         } catch {
+            shouldShowError.toggle()
             print(error.localizedDescription)
         }
     }

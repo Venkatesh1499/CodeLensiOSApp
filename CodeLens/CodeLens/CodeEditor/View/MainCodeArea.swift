@@ -13,73 +13,82 @@ struct MainCodeArea: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                // TODO: - Need to look into colors
-                //            #090C15
-                //                 ↓
-                //            #111827
-                //                 ↓
-                //            #141B2D
-                if viewModel.shouldShowSplashScreen {
-                    SplasScreenAnimation()
-                } else {
-                    //                LinearGradient(colors: [
-                    //                    Color(hex: "#090F15"),
-                    //                    Color(hex: "111827"),
-                    //                    Color(hex: "#141FB2F") //141B2F
-                    //                ], startPoint: .topLeading,
-                    //                               endPoint: .bottomTrailing)
-                    //            Color(Color(hex: "#151A28")).opacity(0.8)
-                    //                .ignoresSafeArea(edges: .all)
-                    let colors = []
-                    LinearGradient(colors: [
-                        Color(hex: "#1A1748"),
-                        Color(hex: "#10163C"),
-                        Color(hex: "#080B23"),
-                        //                    Color(hex: "#10163C"),
-                        //                    Color(hex: "#1A1748")
-                    ], startPoint: .topLeading,
-                                   endPoint: .bottomTrailing)
+//                Color(hex: "#111827") //0D1117
+                LinearGradient(
+                    colors: [
+                        Color(hex: "#0F172A"),
+                        Color(hex: "#1E293B")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+//                LinearGradient(
+//                    colors: [
+//                        Color(hex: "#020617"),
+//                        Color(hex: "#0F172A")
+//                    ],
+//                    startPoint: .topLeading,
+//                    endPoint: .bottomTrailing
+//                )
                     .ignoresSafeArea(edges: .all)
+                
+                VStack(alignment: .leading, spacing: 15) {
+                    titleAndSubtitle
+                        .padding(.bottom, 5)
                     
-                    VStack(alignment: .leading, spacing: 15) {
-                        titleAndSubtitle
-                            .padding(.bottom, 15)
-                        
-                        Text("Languague")
-                            .foregroundStyle(Color(.lightGray))
-                            .font(.system(size: 15))
-                            .fontWeight(.medium)
-                        
-                        languageChangeView
-                            .padding(.bottom, 15)
-                        
-                        codeEditorView(with: $viewModel.code)
-                        
-                        easyMenu
-                        
-                        Spacer()
-                        
-                        reviewButton
-                        
-                    }
-                    .padding()
+                    Text("Languague")
+                        .foregroundStyle(Color(.lightGray))
+                        .font(.system(size: 15))
+                        .fontWeight(.medium)
                     
-                    if viewModel.isLoading {
-                        AnimationView()
+                    languageChangeView
+                        .padding(.bottom, 10)
+                    
+                    codeEditorView(with: $viewModel.code)
+                        .overlay(alignment: .bottom) {
+                            if viewModel.shouldShowError {
+                                withAnimation {
+                                    ErrorView()
+                                }
+                            }
+                        }
+                        .onChange(of: viewModel.shouldShowError) {
+                            removeErrorView()
+                        }
+                    
+                    easyMenu
+                    
+                    Spacer()
+                    
+                    ReviewButton(shouldDisable: viewModel.code.isEmpty) {
+                        Task {
+                            await viewModel.initiateReview()
+                        }
                     }
+                    
+                }
+                .padding()
+                
+                if viewModel.isLoading {
+                    AnimationView()
                 }
             }
-            .onAppear {
-                //            viewModel.shouldShowSplashScreen.toggle()
-                //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                //                viewModel.shouldShowSplashScreen.toggle()
-                //            }
+        }
+        .logoutButton(title: "Code editor") {
+            viewModel.shouldShowLogoutPreconfirmation.toggle()
+        }
+        .popup(isPresented: $viewModel.shouldShowLogoutPreconfirmation) {
+            LogoutPreConfirmationPopUp {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
+            } onTapCancel: {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
             }
         }
-        .navigationTitle("Code editor")
-//        .navigationBarTitleDisplayMode(<#T##displayMode: NavigationBarItem.TitleDisplayMode##NavigationBarItem.TitleDisplayMode#>)
+
         .navigationDestination(isPresented: $viewModel.shouldNavigateToResultView) {
-            ReviewResultView(codeReviewResponse: viewModel.reviewAPIResponse, issues: viewModel.issues)
+            ReviewResultView(language: viewModel.selectedLanguage,
+                             codeReviewResponse: viewModel.reviewAPIResponse,
+                             issues: viewModel.issues)
         }
     }
     
@@ -99,13 +108,9 @@ struct MainCodeArea: View {
                     }
                 }
                 .frame(maxWidth: 50, alignment: .trailing)
-//                ScrollView(.horizontal) {
-                    CodeEditor(text: code,
-                               shouldSelectAll: $viewModel.shouldSelectAll,
-                               language: viewModel.selectedLanguage)
-                    
-//                }
-//                .frame(maxHeight: 380)
+                CodeEditor(text: code,
+                           shouldSelectAll: $viewModel.shouldSelectAll,
+                           language: viewModel.selectedLanguage)
             }
         }
         .background(Color(hex: "#1E1E1E"))
@@ -114,7 +119,7 @@ struct MainCodeArea: View {
     }
     
     private var titleAndSubtitle: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 5) {
             Text("Paste your code")
                 .foregroundStyle(.white)
                 .font(.system(size: 36))
@@ -153,7 +158,6 @@ struct MainCodeArea: View {
                             .stroke(Color(.lightGray), lineWidth: 0.8)
                     )
             }
-
         }
         .padding(8)
         .background(
@@ -205,11 +209,23 @@ struct MainCodeArea: View {
         }
     }
     
-    private var reviewButton: some View {
-        Button {
-            Task {
-                await viewModel.initiateReview()
+    func removeErrorView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+            withAnimation {
+                viewModel.shouldShowError = false
             }
+        }
+    }
+}
+
+struct ReviewButton: View {
+    
+    var shouldDisable: Bool
+    var onTapAction: () -> Void
+    
+    var body: some View {
+        Button {
+            if !shouldDisable { onTapAction() }
         } label: {
             HStack(spacing: 15) {
                 Spacer()
@@ -227,11 +243,11 @@ struct MainCodeArea: View {
             }
         }
         .padding()
-        .background(Color(hex: "#6048FF"))
+        .background(shouldDisable ? Color(.lightGray).opacity(0.6) : Color(hex: "#6048FF")) //B794F4
         .frame(maxWidth: .infinity, maxHeight: 50)
         .cornerRadius(12)
         .shadow(
-            color: Color(hex: "#9A6BFF").opacity(0.35),
+            color: shouldDisable ? .clear : Color(hex: "#9A6BFF").opacity(0.35),
             radius: 16
         )
     }

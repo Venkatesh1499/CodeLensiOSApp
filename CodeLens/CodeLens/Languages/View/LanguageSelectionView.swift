@@ -21,12 +21,20 @@ struct LanguageSelectionView: View {
         NavigationStack {
             ZStack {
                 // TODO: - Need to look into colors
-                LinearGradient(colors: [
-                    Color(hex: "#080B23"),
-                    Color(hex: "#10163C"),
-                    Color(hex: "#1A1748")
-                ], startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
+//                LinearGradient(colors: [
+//                    Color(hex: "#080B23"),
+//                    Color(hex: "#10163C"),
+//                    Color(hex: "#1A1748")
+//                ], startPoint: .topLeading,
+//                               endPoint: .bottomTrailing)
+                LinearGradient(
+                    colors: [
+                        Color(hex: "#0F172A"),
+                        Color(hex: "#1E293B")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
                 .ignoresSafeArea(edges: .all)
                 VStack(alignment: .leading, spacing: 10) {
                     VStack(alignment: .leading, spacing: 10) {
@@ -85,11 +93,31 @@ struct LanguageSelectionView: View {
                 }
                 .overlay(alignment: .bottom) {
                     PrimaryButton(title: "Continue", image: "arrow.forward", shouldDisable: viewModel.selectedLanguage == "") {
-                        print("Continue tapped please proceed")
                         viewModel.shouldNavigateToCodeEditor.toggle()
                     }
                 }
             }
+            .logoutButton(title: "") {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
+            }
+            .popup(isPresented: $viewModel.shouldShowLogoutPreconfirmation) {
+                LogoutPreConfirmationPopUp {
+                    viewModel.shouldShowLogoutPreconfirmation.toggle()
+                } onTapCancel: {
+                    viewModel.shouldShowLogoutPreconfirmation.toggle()
+                }
+            }
+//            .overlay(alignment: .center) {
+//                if viewModel.shouldShowLogoutPreconfirmation {
+//                    withAnimation {
+//                        LogoutPreConfirmationPopUp {
+//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
+//                        } onTapCancel: {
+//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
+//                        }
+//                    }
+//                }
+//            }
             .navigationDestination(isPresented: $viewModel.shouldNavigateToCodeEditor) {
                 MainCodeArea(selectedLanguage: viewModel.selectedLanguage)
             }

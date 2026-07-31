@@ -9,16 +9,31 @@ import SwiftUI
 
 struct AuthView: View {
     
+    @State var shouldShowSplashScreen: Bool = false
+    
+    @StateObject private var authManager = AuthenticationManager.shared
+    
     var body: some View {
         VStack {
-            if AuthenticationManager.shared.isUserLoggedIn {
-                if true {
+            if shouldShowSplashScreen {
+                SplashScreenAnimation()
+            } else {
+                if authManager.isUserLoggedIn {
+//                    if true {
+//                        LanguageSelectionView()
+//                    } else {
+//                        // main code view will come here
+//                    }
                     LanguageSelectionView()
                 } else {
-                    // main code view will come here
+                    LoginView()
                 }
-            } else {
-                LoginView()
+            }
+        }
+        .onAppear {
+            shouldShowSplashScreen.toggle()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                shouldShowSplashScreen.toggle()
             }
         }
     }
@@ -66,6 +81,7 @@ struct CreateAccountView: View {
                             
                             if let error = error {
                                 print("Error during signIn", error)
+                                return
                             }
                             
                             if result != "Error during signIn" {

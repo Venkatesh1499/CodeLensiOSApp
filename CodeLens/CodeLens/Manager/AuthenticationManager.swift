@@ -8,23 +8,25 @@
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import Combine
 
-class AuthenticationManager {
+class AuthenticationManager: ObservableObject {
     
     static let shared = AuthenticationManager()
     
-    private init() {}
-    
-    var isUserLoggedIn: Bool {
-        return currentUserID != nil
-    }
+    @Published var isUserLoggedIn: Bool = false
     
     var currentUserID: FirebaseAuth.User? {
         Auth.auth().currentUser
     }
     
+    private init() {
+        isUserLoggedIn = currentUserID != nil
+    }
+    
     func signUp(name: String, email: String, password: String, completion: @escaping ((Error?, String?)->Void)) {
-        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            guard let self else { return }
             if let error = error {
                 print("Error during signIn - \(error)")
                 completion(error, nil)
@@ -35,6 +37,9 @@ class AuthenticationManager {
                 return
             }
             
+            DispatchQueue.main.async {
+                self.isUserLoggedIn = true
+            }
             completion(nil, userID)
             
             let user = User(uid: userID,
@@ -42,7 +47,7 @@ class AuthenticationManager {
                             email: email,
                             password: password,
                             timeStamp: Date().timeIntervalSince1970)
-            self.insertUserToDB(user: user)
+            insertUserToDB(user: user)
         }
     }
     
@@ -56,13 +61,18 @@ class AuthenticationManager {
     
     
     func login(email: String, password: String, completion: @escaping ((Error?, String?) -> Void)) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+            guard let self else { return }
             if let error = error {
                 print("Error during login - \(error)")
             }
             guard let userID = result?.user.uid else {
                 print("Error during Login")
                 return
+            }
+            
+            DispatchQueue.main.async {
+                self.isUserLoggedIn = true
             }
             print("Login successful", userID)
         }
@@ -71,6 +81,7 @@ class AuthenticationManager {
     func logout() {
         do {
             try Auth.auth().signOut()
+            isUserLoggedIn = false
         } catch let error {
             print(error.localizedDescription)
         }
