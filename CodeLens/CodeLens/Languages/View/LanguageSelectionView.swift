@@ -21,22 +21,29 @@ struct LanguageSelectionView: View {
         NavigationStack {
             ZStack {
                 // TODO: - Need to look into colors
-                LinearGradient(colors: [
-                    Color(hex: "#080B23"),
-                    Color(hex: "#10163C"),
-                    Color(hex: "#1A1748")
-                ], startPoint: .topLeading,
-                               endPoint: .bottomTrailing)
+//                LinearGradient(colors: [
+//                    Color(hex: "#080B23"),
+//                    Color(hex: "#10163C"),
+//                    Color(hex: "#1A1748")
+//                ], startPoint: .topLeading,
+//                               endPoint: .bottomTrailing)
+                LinearGradient(
+                    colors: [
+                        Color(hex: "#0F172A"),
+                        Color(hex: "#1E293B")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
                 .ignoresSafeArea(edges: .all)
                 VStack(alignment: .leading, spacing: 10) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Choose Language")
+                            .font(.system(size: 32, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
-                            .font(.system(size: 32))
-                            .fontWeight(.bold)
                         Text("Select the primary language of your code so we can tailor the Al review experience.")
-                            .foregroundStyle(Color(.lightText))
-                            .font(.system(size: 20))
+                            .font(.system(size: 20, weight: .regular))
+                            .foregroundStyle(Color(hex: "#94A3B8"))
                     }
                     .padding()
                     ScrollView {
@@ -65,7 +72,7 @@ struct LanguageSelectionView: View {
                                     }
                                     .shadow(
                                         color: Color(hex: "#9A6BFF").opacity(0.45),
-                                        radius: 12
+                                        radius: 0.5
                                     )
                                     .padding(.vertical, 3)
                                     .onTapGesture {
@@ -85,11 +92,31 @@ struct LanguageSelectionView: View {
                 }
                 .overlay(alignment: .bottom) {
                     PrimaryButton(title: "Continue", image: "arrow.forward", shouldDisable: viewModel.selectedLanguage == "") {
-                        print("Continue tapped please proceed")
                         viewModel.shouldNavigateToCodeEditor.toggle()
                     }
                 }
             }
+            .logoutButton(title: "") {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
+            }
+            .popup(isPresented: $viewModel.shouldShowLogoutPreconfirmation) {
+                LogoutPreConfirmationPopUp {
+                    viewModel.shouldShowLogoutPreconfirmation.toggle()
+                } onTapCancel: {
+                    viewModel.shouldShowLogoutPreconfirmation.toggle()
+                }
+            }
+//            .overlay(alignment: .center) {
+//                if viewModel.shouldShowLogoutPreconfirmation {
+//                    withAnimation {
+//                        LogoutPreConfirmationPopUp {
+//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
+//                        } onTapCancel: {
+//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
+//                        }
+//                    }
+//                }
+//            }
             .navigationDestination(isPresented: $viewModel.shouldNavigateToCodeEditor) {
                 MainCodeArea(selectedLanguage: viewModel.selectedLanguage)
             }
@@ -102,7 +129,7 @@ struct Card: View {
     
     var body: some View {
         VStack {
-            Image(language.image)
+            Image.asset(language.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 65, height: 90)

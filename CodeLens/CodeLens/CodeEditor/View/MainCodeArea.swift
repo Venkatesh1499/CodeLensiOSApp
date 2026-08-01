@@ -4,6 +4,8 @@ struct MainCodeArea: View {
     
     @StateObject var viewModel: CodeEditorViewModel
     
+    @State var temp: String = ""
+    
     init(selectedLanguage: String) {
         self._viewModel = StateObject(wrappedValue: CodeEditorViewModel(selectedLanguage: selectedLanguage))
     }
@@ -13,37 +15,21 @@ struct MainCodeArea: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                // TODO: - Need to look into colors
-                //            #090C15
-                //                 ↓
-                //            #111827
-                //                 ↓
-                //            #141B2D
-                if viewModel.shouldShowSplashScreen {
-                    SplasScreenAnimation()
-                } else {
-                    //                LinearGradient(colors: [
-                    //                    Color(hex: "#090F15"),
-                    //                    Color(hex: "111827"),
-                    //                    Color(hex: "#141FB2F") //141B2F
-                    //                ], startPoint: .topLeading,
-                    //                               endPoint: .bottomTrailing)
-                    //            Color(Color(hex: "#151A28")).opacity(0.8)
-                    //                .ignoresSafeArea(edges: .all)
-                    let colors = []
-                    LinearGradient(colors: [
-                        Color(hex: "#1A1748"),
-                        Color(hex: "#10163C"),
-                        Color(hex: "#080B23"),
-                        //                    Color(hex: "#10163C"),
-                        //                    Color(hex: "#1A1748")
-                    ], startPoint: .topLeading,
-                                   endPoint: .bottomTrailing)
-                    .ignoresSafeArea(edges: .all)
-                    
+                LinearGradient(
+                    colors: [
+                        Color(hex: "#0F172A"),
+                        Color(hex: "#1E293B")
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
+                .ignoresSafeArea(edges: .all)
+                
+                ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
+                        // TODO: - Need to create a common component instead of titleAndSubtitle
                         titleAndSubtitle
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 5)
                         
                         Text("Languague")
                             .foregroundStyle(Color(.lightGray))
@@ -51,35 +37,67 @@ struct MainCodeArea: View {
                             .fontWeight(.medium)
                         
                         languageChangeView
-                            .padding(.bottom, 15)
+                            .padding(.bottom, 10)
                         
                         codeEditorView(with: $viewModel.code)
+                            .overlay(alignment: .bottom) {
+                                if viewModel.shouldShowError {
+                                    withAnimation {
+                                        // TODO: - Need to configure error for formatting also
+                                        ErrorView(title: "Review request failed", subTitle: "Something went wrong. Please try again.")
+                                    }
+                                }
+                            }
+                            .onChange(of: viewModel.shouldShowError) {
+                                removeErrorView()
+                            }
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
                         
                         easyMenu
                         
-                        Spacer()
-                        
-                        reviewButton
+                        ReviewButton(shouldDisable: viewModel.code.isEmpty) {
+                            Task {
+                                await viewModel.initiateReview()
+                            }
+                        }
                         
                     }
                     .padding()
-                    
-                    if viewModel.isLoading {
-                        AnimationView()
-                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    print("Keyboard opened")
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    print("Keyboard closed")
+                }
+                
+                if viewModel.isLoading {
+                    AnimationView()
                 }
             }
-            .onAppear {
-                //            viewModel.shouldShowSplashScreen.toggle()
-                //            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                //                viewModel.shouldShowSplashScreen.toggle()
-                //            }
+        }
+        .logoutButton(title: "Code editor") {
+            viewModel.shouldShowLogoutPreconfirmation.toggle()
+        }
+        .popup(isPresented: $viewModel.shouldShowLogoutPreconfirmation) {
+            LogoutPreConfirmationPopUp {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
+            } onTapCancel: {
+                viewModel.shouldShowLogoutPreconfirmation.toggle()
             }
         }
-        .navigationTitle("Code editor")
-//        .navigationBarTitleDisplayMode(<#T##displayMode: NavigationBarItem.TitleDisplayMode##NavigationBarItem.TitleDisplayMode#>)
+
         .navigationDestination(isPresented: $viewModel.shouldNavigateToResultView) {
-            ReviewResultView(codeReviewResponse: viewModel.reviewAPIResponse, issues: viewModel.issues)
+            ReviewResultView(language: viewModel.selectedLanguage,
+                             codeReviewResponse: viewModel.reviewAPIResponse,
+                             issues: viewModel.issues)
         }
     }
     
@@ -87,9 +105,8 @@ struct MainCodeArea: View {
     private func codeEditorView(with code: Binding<String>) -> some View {
         let array = code.wrappedValue.split(separator: "\n", omittingEmptySubsequences: false)
         let count = max(1, array.count)
-        return
-        ScrollView(.vertical) {
-            HStack {
+        return ScrollView(.vertical) {
+             HStack {
                 VStack {
                     ForEach(0..<count, id: \.self) { num in
                         Text("\(num + 1) |")
@@ -99,30 +116,24 @@ struct MainCodeArea: View {
                     }
                 }
                 .frame(maxWidth: 50, alignment: .trailing)
-//                ScrollView(.horizontal) {
-                    CodeEditor(text: code,
-                               shouldSelectAll: $viewModel.shouldSelectAll,
-                               language: viewModel.selectedLanguage)
-                    
-//                }
-//                .frame(maxHeight: 380)
+                CodeEditor(text: code,
+                           shouldSelectAll: $viewModel.shouldSelectAll,
+                           language: viewModel.selectedLanguage)
             }
         }
         .background(Color(hex: "#1E1E1E"))
-        .frame(maxHeight: 380)
+        .frame(height: 280)
         .cornerRadius(12)
     }
     
     private var titleAndSubtitle: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 5) {
             Text("Paste your code")
+                .font(.system(size: 36, weight: .semibold, design: .rounded))
                 .foregroundStyle(.white)
-                .font(.system(size: 36))
-                .fontWeight(.semibold)
             Text("AI will review your code and suggest improvements.")
-                .foregroundStyle(.white)
-                .font(.system(size: 15))
-                .fontWeight(.light)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundStyle(Color(hex: "#94A3B8"))
         }
     }
     
@@ -153,7 +164,6 @@ struct MainCodeArea: View {
                             .stroke(Color(.lightGray), lineWidth: 0.8)
                     )
             }
-
         }
         .padding(8)
         .background(
@@ -190,26 +200,41 @@ struct MainCodeArea: View {
                 await viewModel.performAction(action: QuickActionType(rawValue: index) ?? .format)
             }
         } label: {
-            Spacer()
             VStack {
-                Image(systemName: easyIcon[index])
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .foregroundStyle(Color(hex: "#B794F4").opacity(0.9))
-                Text(easyIconTitles[index])
-                    .foregroundStyle(Color(hex: "#B794F4").opacity(0.8))
-                    .font(.system(size: 14))
+                Spacer()
+                VStack {
+                    Image(systemName: easyIcon[index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(Color(hex: "#B794F4").opacity(0.9))
+                    Text(easyIconTitles[index])
+                        .foregroundStyle(Color(hex: "#B794F4").opacity(0.8))
+                        .font(.system(size: 14))
+                }
+                Spacer()
             }
-            Spacer()
+            .padding()
         }
     }
     
-    private var reviewButton: some View {
-        Button {
-            Task {
-                await viewModel.initiateReview()
+    func removeErrorView() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+            withAnimation {
+                viewModel.shouldShowError = false
             }
+        }
+    }
+}
+
+struct ReviewButton: View {
+    
+    var shouldDisable: Bool
+    var onTapAction: () -> Void
+    
+    var body: some View {
+        Button {
+            if !shouldDisable { onTapAction() }
         } label: {
             HStack(spacing: 15) {
                 Spacer()
@@ -227,11 +252,11 @@ struct MainCodeArea: View {
             }
         }
         .padding()
-        .background(Color(hex: "#6048FF"))
+        .background(shouldDisable ? Color(.lightGray).opacity(0.6) : Color(hex: "#6048FF")) //B794F4
         .frame(maxWidth: .infinity, maxHeight: 50)
         .cornerRadius(12)
         .shadow(
-            color: Color(hex: "#9A6BFF").opacity(0.35),
+            color: shouldDisable ? .clear : Color(hex: "#9A6BFF").opacity(0.35),
             radius: 16
         )
     }

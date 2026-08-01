@@ -1,79 +1,136 @@
 import SwiftUI
 
+
+import SwiftUI
+
 struct ImprovedCodeView: View {
-    
-    @State var code: String = """
-def python():\n     return a/b
-"""
-    @State var shouldSelectAll: Bool = false
-    var language: String = ""
-    
+
+    let code: String
+    let language: String
+
+    @State private var shouldShowToast = false
+
     var body: some View {
         ZStack {
-            //            LinearGradient(colors: [
-            //                Color(hex: "#090F15"),
-            //                Color(hex: "111827"),
-            //                Color(hex: "#141FB2F") //141B2F
-            //            ], startPoint: .topLeading,
-            //                           endPoint: .bottomTrailing)
-            //111827 //151A28
-            Color(hex: "#111827").opacity(0.92)
-                .ignoresSafeArea(edges: .all)
-            VStack(spacing: 0) {
-                HStack {
-                    Image("Python")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .padding(.vertical, 8)
-                        .padding(.leading)
-                    
-                    Text("Python")
-                        .font(.system(size: 16))
-                        .foregroundStyle(Color(.lightGray))
-                        .padding(8)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "document.on.document")
-                        .font(.system(size: 18))
-                        .foregroundStyle(Color(.lightGray))
-                        .padding(.trailing)
-                        .padding(.vertical, 8)
-                        .onTapGesture {
-                            UIPasteboard.general.string = code
-                            print("UIPasteboard.general.string", UIPasteboard.general.string)
-                        }
-                }
-                .background(
-                    Color(hex: "#090F15"),
-                    in: UnevenRoundedRectangle(topLeadingRadius: 16,
-                                               bottomLeadingRadius: 0,
-                                               bottomTrailingRadius: 0,
-                                               topTrailingRadius: 16)
-                )
+            Color(hex: "#111827")
+                .ignoresSafeArea()
+
+            VStack(spacing: 20) {
+
+                CodeHeaderView()
+
+                LanguageHeaderView(language: language, onCopy: copyCode)
                 
-                codeEditorView(with: $code)
-                    .background(
-                        Color(hex: "#1E1E1E"),
-                        in:
-                        UnevenRoundedRectangle(topLeadingRadius: 0,
-                                              bottomLeadingRadius: 16,
-                                              bottomTrailingRadius: 16,
-                                              topTrailingRadius: 0)
-                    )
+                CodePreview(code: code, language: language)
+
+                Spacer()
             }
             .padding()
         }
+        .toastModifier(
+            message: "Copied",
+            isShowing: $shouldShowToast
+        )
+    }
+
+    private func copyCode() {
+        UIPasteboard.general.string = code
+        withAnimation {
+            shouldShowToast = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                shouldShowToast = false
+            }
+        }
+    }
+}
+
+struct CodeHeaderView: View {
+
+    var body: some View {
+        HStack(spacing: 20) {
+            Image(systemName: "chevron.left.forwardslash.chevron.right")
+                .font(.system(size: 26))
+                .foregroundStyle(.white)
+                .padding(8)
+                .background {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.white)
+                }
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Improved Code")
+                    .font(.system(size: 28, weight: .semibold))
+                    .foregroundStyle(.white)
+
+                Text("Review and copy the improved code")
+                    .font(.caption)
+                    .foregroundStyle(.gray)
+            }
+
+            Spacer()
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 14)
+                .stroke(.white.opacity(0.3))
+        }
+    }
+}
+
+struct LanguageHeaderView: View {
+
+    let language: String
+    let onCopy: () -> Void
+
+    var body: some View {
+        HStack {
+            Image(language)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+
+            Text(language)
+                .foregroundStyle(.gray)
+
+            Spacer()
+
+            Button(action: onCopy) {
+
+                Image(systemName: "document.on.document")
+                    .foregroundStyle(.gray)
+            }
+        }
+        .padding()
+        .background {
+            Color(hex:"#090F15")
+        }
+        .clipShape(
+            UnevenRoundedRectangle(
+                topLeadingRadius:16,
+                topTrailingRadius:16
+            )
+        )
+    }
+}
+
+struct CodePreview: View {
+    
+    var code: String
+    var language: String
+    
+    private var lines: [Substring] {
+        code
+            .split(separator: "\n",
+                   omittingEmptySubsequences: false)
     }
     
-    // This is the main code editor part
-    private func codeEditorView(with code: Binding<String>) -> some View {
-        let array = code.wrappedValue.split(separator: "\n", omittingEmptySubsequences: false)
-        return ScrollView {
+    var body: some View {
+        ScrollView {
             HStack {
                 VStack {
-                    ForEach(0..<array.count, id: \.self) { num in
+                    ForEach(0..<lines.count, id: \.self) { num in
                         HStack(alignment: .lastTextBaseline) {
                             Text("\(num + 1) |")
                                 .foregroundStyle(Color(hex: "#858585"))
@@ -82,8 +139,8 @@ def python():\n     return a/b
                         }
                     }
                 }
-                CodeEditor(text: code,
-                           shouldSelectAll: $shouldSelectAll,
+                CodeEditor(text: .constant(code),
+                           shouldSelectAll: .constant(false),
                            language: language,
                            isEditable: false)
 //                    .fixedSize(horizontal: true, vertical: false)
@@ -97,5 +154,5 @@ def python():\n     return a/b
 }
 
 #Preview {
-    ImprovedCodeView()
+    ImprovedCodeView(code: "", language: "Python")
 }

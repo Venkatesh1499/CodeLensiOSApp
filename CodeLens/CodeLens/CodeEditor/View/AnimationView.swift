@@ -35,7 +35,7 @@ struct AnimationView: View {
     }
 }
 
-struct SplasScreenAnimation: View {
+struct SplashScreenAnimation: View {
     
     @State var animate: Bool = false
     

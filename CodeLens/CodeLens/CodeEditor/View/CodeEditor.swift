@@ -43,9 +43,9 @@ struct CodeEditor: UIViewRepresentable {
         textView.text = text
         textView.delegate = context.coordinator
         
-        DispatchQueue.main.async {
-            textView.becomeFirstResponder()
-        }
+//        DispatchQueue.main.async {
+//            textView.becomeFirstResponder()
+//        }
 
         textView.backgroundColor = UIColor(Color(hex: "#1E1E1E"))
 

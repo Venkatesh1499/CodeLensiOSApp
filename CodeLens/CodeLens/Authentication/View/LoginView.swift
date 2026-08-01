@@ -8,38 +8,52 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @State var email: String = ""
-    @State var password: String = ""
-    
+    @StateObject var viewModel = CreateAccountViewModel()
+        
     @State var shouldNavigateToSignUp: Bool = false
     
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(hex: "#F8F8FA")
-                    .ignoresSafeArea()
+                
+                BackgroundView()
                 
                 VStack {
                     Spacer()
                     
-                    Image("signupBackground")
+                    Image("backdrop4")
                         .resizable()
                         .scaledToFit()
+                        .frame(height: 300)
                     
                     VStack(spacing: 20) {
-                        Text("Login")
+                        Text("Hey, Welcome back")
                             .font(.system(size: 30, weight: .bold, design: .rounded))
-                            .padding(.bottom)
-                            .multilineTextAlignment(.center)
+                            .foregroundStyle(.white)
+
+                        Text("Login to continue improving your code")
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundStyle(Color(hex: "#94A3B8"))
+                            .padding(.bottom, 5)
                         
                         TextFieldView(image: "envelope",
                                       placeHolder: "Email",
-                                      value: $email)
+                                      value: $viewModel.email,
+                                      isTouched: $viewModel.isEmailTouched,
+                                      error: viewModel.email.validate(for: [.required, .email]))
+                        .onChange(of: viewModel.email) { _, _ in
+                            viewModel.isEmailTouched = true
+                        }
                         
                         TextFieldView(image: "lock",
                                       placeHolder: "Password",
                                       isSecureTextField: true,
-                                      value: $password)
+                                      value: $viewModel.password,
+                                      isTouched: $viewModel.isPasswordTouched,
+                                      error: viewModel.password.validate(for: [.required, .password]))
+                        .onChange(of: viewModel.password) { _, _ in
+                            viewModel.isPasswordTouched = true
+                        }
                         
                         HStack {
                             Spacer()
@@ -48,17 +62,31 @@ struct LoginView: View {
                                 print("Forgot password ?")
                             } label: {
                                 Text("Forgot password ?")
-                                    .foregroundStyle(Color.blue.opacity(0.8))
+                                    .foregroundStyle(Color(hex: "#A78BFA"))
                                     .font(.system(size: 16, weight: .regular, design: .default))
                             }
                         }
                         
-                        GeneralButton(title: "Login") {
-                            print("Login TAPPED")
-                            AuthenticationManager.shared.login(email: email, password: password) { error, result in
-                                print(error?.localizedDescription)
+                        GeneralButton(title: "Login",
+                                      shouldEnable: viewModel.shouldEnableLoginBtn(),
+                                      isLoading: $viewModel.isLoading) {
+                            withAnimation {
+                                viewModel.isLoading.toggle()
+                            }
+                            AuthenticationManager.shared.login(email: viewModel.email, password: viewModel.password) { error, result in
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                    if error != nil || result == "Error during Login" {
+                                        viewModel.shouldShowError = true
+                                    } else {
+                                        viewModel.shouldShowSuccess = true
+                                    }
+                                    withAnimation {
+                                        viewModel.isLoading.toggle()
+                                    }
+                                }
                             }
                         }
+                        .frame(height: 50)
                         .padding(.bottom)
                     }
                     .padding()
@@ -68,8 +96,57 @@ struct LoginView: View {
                     }
                     Spacer()
                 }
-            }.navigationDestination(isPresented: $shouldNavigateToSignUp) {
+                .popup(isPresented: $viewModel.shouldShowSuccess, shouldEnhanceBackground: true) {
+                    withAnimation {
+                        VStack {
+                            ToastView(message: "Login Successful", isSuccess: true)
+                            
+                            Text("Redirecting ....")
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
+                                .foregroundStyle(.white)
+                        }
+                        .onDisappear {
+                            AuthenticationManager.shared.isUserLoggedIn = true
+                        }
+                    }
+                }
+                .popup(isPresented: $viewModel.shouldShowError, shouldEnhanceBackground: false) {
+                    withAnimation {
+                        ErrorView(title: "Login failed", subTitle: "Invalid email or password") {
+                            viewModel.shouldShowError = false
+                        }
+                        .padding()
+                    }
+                }
+            }
+            .navigationDestination(isPresented: $shouldNavigateToSignUp) {
                 CreateAccountView()
+            }
+        }
+        .disabled(viewModel.isLoading)
+    }
+}
+
+struct BackgroundView: View {
+    var body: some View {
+        LinearGradient(
+            colors: [
+                Color(hex: "#0F172A"),
+                Color(hex: "#1E293B")
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+        .overlay(alignment: .topLeading) {
+            withAnimation {
+                ForEach([220, 300, 380], id: \.self) { size in
+                    Circle()
+                        .fill(.white.opacity(0.01))
+                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        .frame(width: CGFloat(size), height: CGFloat(size))
+                }
+                .offset(x: 180, y: -180)
             }
         }
     }
@@ -82,14 +159,13 @@ struct SignUpTextView: View {
     var body: some View {
         HStack {
             Text("Don't have an account?")
-                .foregroundStyle(Color.gray)
                 .font(.system(size: 16, weight: .light, design: .default))
+                .foregroundStyle(Color(hex: "#94A3B8"))
             Button {
-                print("Sign Up clicked")
                 onTapSignUp()
             } label: {
                 Text("Sign Up")
-                    .foregroundStyle(Color.blue)
+                    .foregroundStyle(Color(hex: "#A78BFA"))
                     .font(.system(size: 16, weight: .regular, design: .default))
             }
         }
