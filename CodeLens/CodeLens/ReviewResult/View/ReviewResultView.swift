@@ -88,7 +88,7 @@ struct ReviewResultView: View {
             }
         }
         .padding()
-        .background(Color(hex: "#6048FF"))
+        .background(Color(hex: "#7C3AED"))
         .frame(maxWidth: .infinity, maxHeight: 50)
         .cornerRadius(16)
         .shadow(

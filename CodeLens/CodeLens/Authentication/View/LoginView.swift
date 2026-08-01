@@ -32,14 +32,6 @@ struct LoginView: View {
                                              subtitleSize: 18,
                                              alignment: .center)
                         .padding(.bottom, 5)
-//                        Text("Hey, Welcome back")
-//                            .font(.system(size: 30, weight: .bold, design: .rounded))
-//                            .foregroundStyle(.white)
-//
-//                        Text("Login to continue improving your code")
-//                            .font(.system(size: 18, weight: .regular))
-//                            .foregroundStyle(Color(hex: "#94A3B8"))
-//                            .padding(.bottom, 5)
                         
                         TextFieldView(image: "envelope",
                                       placeHolder: "Email",
@@ -72,27 +64,38 @@ struct LoginView: View {
                             }
                         }
                         
-                        GeneralButton(title: "Login",
-                                      shouldEnable: viewModel.shouldEnableLoginBtn(),
-                                      isLoading: $viewModel.isLoading) {
-                            withAnimation {
-                                viewModel.isLoading.toggle()
-                            }
-                            AuthenticationManager.shared.login(email: viewModel.email, password: viewModel.password) { error, result in
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                    if error != nil || result == "Error during Login" {
-                                        viewModel.shouldShowError = true
-                                    } else {
-                                        viewModel.shouldShowSuccess = true
-                                    }
-                                    withAnimation {
-                                        viewModel.isLoading.toggle()
+                        HStack(spacing: 15) {
+                            GeneralButton(title: "Login",
+                                          shouldEnable: viewModel.shouldEnableLoginBtn(),
+                                          isLoading: $viewModel.isLoading) {
+                                withAnimation {
+                                    viewModel.isLoading.toggle()
+                                }
+                                AuthenticationManager.shared.login(email: viewModel.email, password: viewModel.password) { error, result in
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                        if error != nil || result == "Error during Login" {
+                                            viewModel.shouldShowError = true
+                                        } else {
+                                            viewModel.shouldShowSuccess = true
+                                        }
+                                        withAnimation {
+                                            viewModel.isLoading.toggle()
+                                        }
                                     }
                                 }
                             }
+                            .frame(height: 50)
+                            .padding(.bottom)
+                            
+                            if viewModel.isLoading {
+                                withAnimation {
+                                    Text("Logging in ...")
+                                        .font(.system(size: 24, weight: .semibold, design: .rounded))
+                                        .foregroundStyle(.white.opacity(0.75))
+                                }
+                            }
                         }
-                        .frame(height: 50)
-                        .padding(.bottom)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .padding()
                     
