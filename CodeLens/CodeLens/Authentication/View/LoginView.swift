@@ -15,16 +15,8 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-//                Color(hex: "#F3F6FA")
-                LinearGradient(
-                    colors: [
-                        Color(hex: "#0F172A"),
-                        Color(hex: "#1E293B")
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                    .ignoresSafeArea()
+                
+                BackgroundView()
                 
                 VStack {
                     Spacer()
@@ -46,12 +38,22 @@ struct LoginView: View {
                         
                         TextFieldView(image: "envelope",
                                       placeHolder: "Email",
-                                      value: $viewModel.email)
+                                      value: $viewModel.email,
+                                      isTouched: $viewModel.isEmailTouched,
+                                      error: viewModel.email.validate(for: [.required, .email]))
+                        .onChange(of: viewModel.email) { _, _ in
+                            viewModel.isEmailTouched = true
+                        }
                         
                         TextFieldView(image: "lock",
                                       placeHolder: "Password",
                                       isSecureTextField: true,
-                                      value: $viewModel.password)
+                                      value: $viewModel.password,
+                                      isTouched: $viewModel.isPasswordTouched,
+                                      error: viewModel.password.validate(for: [.required, .password]))
+                        .onChange(of: viewModel.password) { _, _ in
+                            viewModel.isPasswordTouched = true
+                        }
                         
                         HStack {
                             Spacer()
@@ -66,13 +68,13 @@ struct LoginView: View {
                         }
                         
                         GeneralButton(title: "Login",
+                                      shouldEnable: viewModel.shouldEnableLoginBtn(),
                                       isLoading: $viewModel.isLoading) {
-                            print("Login TAPPED")
                             withAnimation {
                                 viewModel.isLoading.toggle()
                             }
                             AuthenticationManager.shared.login(email: viewModel.email, password: viewModel.password) { error, result in
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                     if error != nil || result == "Error during Login" {
                                         viewModel.shouldShowError = true
                                     } else {
@@ -94,15 +96,17 @@ struct LoginView: View {
                     }
                     Spacer()
                 }
-//                .toastModifier(message: "Login successfull", isSuccess: true, isShowing: $viewModel.shouldShowSuccess)
                 .popup(isPresented: $viewModel.shouldShowSuccess, shouldEnhanceBackground: true) {
                     withAnimation {
                         VStack {
                             ToastView(message: "Login Successful", isSuccess: true)
                             
                             Text("Redirecting ....")
-                                .font(.system(size: 24, weight: .semibold, design: .rounded))
+                                .font(.system(size: 20, weight: .semibold, design: .rounded))
                                 .foregroundStyle(.white)
+                        }
+                        .onDisappear {
+                            AuthenticationManager.shared.isUserLoggedIn = true
                         }
                     }
                 }
@@ -123,6 +127,31 @@ struct LoginView: View {
     }
 }
 
+struct BackgroundView: View {
+    var body: some View {
+        LinearGradient(
+            colors: [
+                Color(hex: "#0F172A"),
+                Color(hex: "#1E293B")
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .ignoresSafeArea()
+        .overlay(alignment: .topLeading) {
+            withAnimation {
+                ForEach([220, 300, 380], id: \.self) { size in
+                    Circle()
+                        .fill(.white.opacity(0.01))
+                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
+                        .frame(width: CGFloat(size), height: CGFloat(size))
+                }
+                .offset(x: 180, y: -180)
+            }
+        }
+    }
+}
+
 struct SignUpTextView: View {
     
     var onTapSignUp: (() -> Void)
@@ -130,11 +159,9 @@ struct SignUpTextView: View {
     var body: some View {
         HStack {
             Text("Don't have an account?")
-//                .foregroundStyle(Color.gray)
-                .foregroundStyle(Color(hex: "#94A3B8"))
                 .font(.system(size: 16, weight: .light, design: .default))
+                .foregroundStyle(Color(hex: "#94A3B8"))
             Button {
-                print("Sign Up clicked")
                 onTapSignUp()
             } label: {
                 Text("Sign Up")

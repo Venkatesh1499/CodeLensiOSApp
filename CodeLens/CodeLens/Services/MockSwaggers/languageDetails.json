@@ -1,69 +1,188 @@
-
 [
     {
         "name": "Python",
         "image": "Python",
-        "isAvailable": true
-    },
-    {
-        "name": "Swift",
-        "image": "Swift",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".py"
     },
     {
         "name": "Java",
         "image": "Java",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".java"
     },
     {
         "name": "JavaScript",
         "image": "JavaScript",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".js"
     },
     {
         "name": "TypeScript",
         "image": "TypeScript",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".ts"
+    },
+    {
+        "name": "C",
+        "image": "C",
+        "isAvailable": true,
+        "extension": ".c"
+    },
+    {
+        "name": "C++",
+        "image": "Cpp",
+        "isAvailable": true,
+        "extension": ".cpp"
+    },
+    {
+        "name": "C#",
+        "image": "CSharp",
+        "isAvailable": false,
+        "extension": ".cs"
+    },
+    {
+        "name": "Swift",
+        "image": "Swift",
+        "isAvailable": true,
+        "extension": ".swift"
     },
     {
         "name": "Kotlin",
         "image": "Kotlin",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".kt"
     },
     {
         "name": "Go",
         "image": "Go",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".go"
     },
     {
         "name": "Rust",
         "image": "Rust",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".rs"
     },
     {
         "name": "Ruby",
         "image": "Ruby",
-        "isAvailable": false
+        "isAvailable": true,
+        "extension": ".rb"
     },
     {
-        "name": "C++",
-        "image": "C++",
-        "isAvailable": false
+        "name": "PHP",
+        "image": "PHP",
+        "isAvailable": false,
+        "extension": ".php"
     },
     {
-        "name": "TypeScript",
-        "image": "TypeScript",
-        "isAvailable": false
+        "name": "Dart",
+        "image": "Dart",
+        "isAvailable": false,
+        "extension": ".dart"
     },
     {
-        "name": "Kotlin",
-        "image": "Kotlin",
-        "isAvailable": false
+        "name": "Scala",
+        "image": "Scala",
+        "isAvailable": false,
+        "extension": ".scala"
     },
     {
-        "name": "Go",
-        "image": "Go",
-        "isAvailable": false
+        "name": "R",
+        "image": "R",
+        "isAvailable": false,
+        "extension": ".r"
+    },
+    {
+        "name": "Perl",
+        "image": "Perl",
+        "isAvailable": false,
+        "extension": ".pl"
+    },
+    {
+        "name": "Lua",
+        "image": "Lua",
+        "isAvailable": false,
+        "extension": ".lua"
+    },
+    {
+        "name": "Shell",
+        "image": "Shell",
+        "isAvailable": false,
+        "extension": ".sh"
+    },
+    {
+        "name": "PowerShell",
+        "image": "PowerShell",
+        "isAvailable": false,
+        "extension": ".ps1"
+    },
+    {
+        "name": "Objective-C",
+        "image": "ObjectiveC",
+        "isAvailable": false,
+        "extension": ".m"
+    },
+    {
+        "name": "Haskell",
+        "image": "Haskell",
+        "isAvailable": false,
+        "extension": ".hs"
+    },
+    {
+        "name": "Elixir",
+        "image": "Elixir",
+        "isAvailable": false,
+        "extension": ".ex"
+    },
+    {
+        "name": "Clojure",
+        "image": "Clojure",
+        "isAvailable": false,
+        "extension": ".clj"
+    },
+    {
+        "name": "F#",
+        "image": "FSharp",
+        "isAvailable": false,
+        "extension": ".fs"
+    },
+    {
+        "name": "Julia",
+        "image": "Julia",
+        "isAvailable": false,
+        "extension": ".jl"
+    },
+    {
+        "name": "MATLAB",
+        "image": "MATLAB",
+        "isAvailable": false,
+        "extension": ".m"
+    },
+    {
+        "name": "Groovy",
+        "image": "Groovy",
+        "isAvailable": false,
+        "extension": ".groovy"
+    },
+    {
+        "name": "Visual Basic",
+        "image": "VB",
+        "isAvailable": false,
+        "extension": ".vb"
+    },
+    {
+        "name": "Fortran",
+        "image": "Fortran",
+        "isAvailable": false,
+        "extension": ".f90"
+    },
+    {
+        "name": "COBOL",
+        "image": "COBOL",
+        "isAvailable": false,
+        "extension": ".cbl"
     }
 ]
-

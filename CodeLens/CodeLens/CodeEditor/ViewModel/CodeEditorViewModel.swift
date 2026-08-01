@@ -89,6 +89,7 @@ extension CodeEditorViewModel {
             isLoading = false
             handleFormatAPIResponse(response: response)
         } catch {
+            isLoading = false
             shouldShowError.toggle()
             print(error.localizedDescription)
         }
@@ -99,6 +100,7 @@ extension CodeEditorViewModel {
     
     func handleFormatAPIResponse(response: FormatResponse) {
         if let error = response.error {
+            shouldShowError.toggle()
             print(error)
         } else if let formattedCode = response.formattedCode {
             DispatchQueue.main.async {

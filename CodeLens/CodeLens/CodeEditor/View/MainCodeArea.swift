@@ -4,6 +4,8 @@ struct MainCodeArea: View {
     
     @StateObject var viewModel: CodeEditorViewModel
     
+    @State var temp: String = ""
+    
     init(selectedLanguage: String) {
         self._viewModel = StateObject(wrappedValue: CodeEditorViewModel(selectedLanguage: selectedLanguage))
     }
@@ -13,7 +15,6 @@ struct MainCodeArea: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-//                Color(hex: "#111827") //0D1117
                 LinearGradient(
                     colors: [
                         Color(hex: "#0F172A"),
@@ -22,52 +23,60 @@ struct MainCodeArea: View {
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
-//                LinearGradient(
-//                    colors: [
-//                        Color(hex: "#020617"),
-//                        Color(hex: "#0F172A")
-//                    ],
-//                    startPoint: .topLeading,
-//                    endPoint: .bottomTrailing
-//                )
-                    .ignoresSafeArea(edges: .all)
+                .ignoresSafeArea(edges: .all)
                 
-                VStack(alignment: .leading, spacing: 15) {
-                    titleAndSubtitle
-                        .padding(.bottom, 5)
-                    
-                    Text("Languague")
-                        .foregroundStyle(Color(.lightGray))
-                        .font(.system(size: 15))
-                        .fontWeight(.medium)
-                    
-                    languageChangeView
-                        .padding(.bottom, 10)
-                    
-                    codeEditorView(with: $viewModel.code)
-                        .overlay(alignment: .bottom) {
-                            if viewModel.shouldShowError {
-                                withAnimation {
-                                    ErrorView(title: "Review request failed", subTitle: "Something went wrong. Please try again.")
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 15) {
+                        // TODO: - Need to create a common component instead of titleAndSubtitle
+                        titleAndSubtitle
+                            .padding(.bottom, 5)
+                        
+                        Text("Languague")
+                            .foregroundStyle(Color(.lightGray))
+                            .font(.system(size: 15))
+                            .fontWeight(.medium)
+                        
+                        languageChangeView
+                            .padding(.bottom, 10)
+                        
+                        codeEditorView(with: $viewModel.code)
+                            .overlay(alignment: .bottom) {
+                                if viewModel.shouldShowError {
+                                    withAnimation {
+                                        // TODO: - Need to configure error for formatting also
+                                        ErrorView(title: "Review request failed", subTitle: "Something went wrong. Please try again.")
+                                    }
                                 }
                             }
+                            .onChange(of: viewModel.shouldShowError) {
+                                removeErrorView()
+                            }
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+//                        TextField("please enter", text: $temp)
+                        
+                        easyMenu
+                        
+                        ReviewButton(shouldDisable: viewModel.code.isEmpty) {
+                            Task {
+                                await viewModel.initiateReview()
+                            }
                         }
-                        .onChange(of: viewModel.shouldShowError) {
-                            removeErrorView()
-                        }
-                    
-                    easyMenu
-                    
-                    Spacer()
-                    
-                    ReviewButton(shouldDisable: viewModel.code.isEmpty) {
-                        Task {
-                            await viewModel.initiateReview()
-                        }
+                        
                     }
-                    
+                    .padding()
                 }
-                .padding()
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    print("Keyboard opened")
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    print("Keyboard closed")
+                }
                 
                 if viewModel.isLoading {
                     AnimationView()
@@ -96,9 +105,8 @@ struct MainCodeArea: View {
     private func codeEditorView(with code: Binding<String>) -> some View {
         let array = code.wrappedValue.split(separator: "\n", omittingEmptySubsequences: false)
         let count = max(1, array.count)
-        return
-        ScrollView(.vertical) {
-            HStack {
+        return ScrollView(.vertical) {
+             HStack {
                 VStack {
                     ForEach(0..<count, id: \.self) { num in
                         Text("\(num + 1) |")
@@ -114,20 +122,18 @@ struct MainCodeArea: View {
             }
         }
         .background(Color(hex: "#1E1E1E"))
-        .frame(maxHeight: 380)
+        .frame(height: 280)
         .cornerRadius(12)
     }
     
     private var titleAndSubtitle: some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("Paste your code")
+                .font(.system(size: 36, weight: .semibold, design: .rounded))
                 .foregroundStyle(.white)
-                .font(.system(size: 36))
-                .fontWeight(.semibold)
             Text("AI will review your code and suggest improvements.")
-                .foregroundStyle(.white)
-                .font(.system(size: 15))
-                .fontWeight(.light)
+                .font(.system(size: 15, weight: .regular))
+                .foregroundStyle(Color(hex: "#94A3B8"))
         }
     }
     
@@ -194,18 +200,21 @@ struct MainCodeArea: View {
                 await viewModel.performAction(action: QuickActionType(rawValue: index) ?? .format)
             }
         } label: {
-            Spacer()
             VStack {
-                Image(systemName: easyIcon[index])
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-                    .foregroundStyle(Color(hex: "#B794F4").opacity(0.9))
-                Text(easyIconTitles[index])
-                    .foregroundStyle(Color(hex: "#B794F4").opacity(0.8))
-                    .font(.system(size: 14))
+                Spacer()
+                VStack {
+                    Image(systemName: easyIcon[index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 20, height: 20)
+                        .foregroundStyle(Color(hex: "#B794F4").opacity(0.9))
+                    Text(easyIconTitles[index])
+                        .foregroundStyle(Color(hex: "#B794F4").opacity(0.8))
+                        .font(.system(size: 14))
+                }
+                Spacer()
             }
-            Spacer()
+            .padding()
         }
     }
     

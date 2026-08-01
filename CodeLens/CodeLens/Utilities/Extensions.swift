@@ -64,3 +64,13 @@ extension Encodable {
     }
 }
 
+extension Image {
+    
+    static func asset(_ name: String, placeholder: String = "placeholder_language") -> Image {
+        if UIImage(named: name) != nil {
+            return Image(name)
+        } else {
+            return Image(placeholder)
+        }
+    }
+}

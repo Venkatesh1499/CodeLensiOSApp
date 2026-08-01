@@ -37,7 +37,7 @@ class AuthenticationManager: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.isUserLoggedIn = true
             }
             completion(nil, userID)
@@ -74,7 +74,7 @@ class AuthenticationManager: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.isUserLoggedIn = true
             }
             completion(nil, "SUCCESS")

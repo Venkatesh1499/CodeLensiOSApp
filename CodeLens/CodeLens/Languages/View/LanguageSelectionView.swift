@@ -39,12 +39,11 @@ struct LanguageSelectionView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Choose Language")
+                            .font(.system(size: 32, weight: .bold, design: .rounded))
                             .foregroundStyle(.white)
-                            .font(.system(size: 32))
-                            .fontWeight(.bold)
                         Text("Select the primary language of your code so we can tailor the Al review experience.")
-                            .foregroundStyle(Color(.lightText))
-                            .font(.system(size: 20))
+                            .font(.system(size: 20, weight: .regular))
+                            .foregroundStyle(Color(hex: "#94A3B8"))
                     }
                     .padding()
                     ScrollView {
@@ -73,7 +72,7 @@ struct LanguageSelectionView: View {
                                     }
                                     .shadow(
                                         color: Color(hex: "#9A6BFF").opacity(0.45),
-                                        radius: 12
+                                        radius: 0.5
                                     )
                                     .padding(.vertical, 3)
                                     .onTapGesture {
@@ -130,7 +129,7 @@ struct Card: View {
     
     var body: some View {
         VStack {
-            Image(language.image)
+            Image.asset(language.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 65, height: 90)

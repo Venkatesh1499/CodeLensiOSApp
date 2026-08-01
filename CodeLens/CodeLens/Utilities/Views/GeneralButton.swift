@@ -4,6 +4,7 @@ struct GeneralButton: View {
     
     var title: String
     var color: String = "#7C3AED"
+    var shouldEnable: Bool
     @Binding var isLoading: Bool
     
     var onTapAction: (() -> Void)
@@ -16,7 +17,7 @@ struct GeneralButton: View {
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: isLoading ? 26 : 14)
-                    .fill(Color(hex: color))
+                    .fill(Color(hex: color).opacity(shouldEnable ? 1 : 0.45))
                 if isLoading {
                     Circle()
                         .trim(from: 0, to: 0.75)
@@ -30,10 +31,10 @@ struct GeneralButton: View {
                         .onAppear {
                             self.animate = true
                         }
-                        .frame(width: 40, height: 40)
+                        .frame(width: 35, height: 35)
                 } else {
                     Text(title)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.white.opacity(shouldEnable ? 1 : 0.75))
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .onAppear {
                             self.animate = false
@@ -41,6 +42,7 @@ struct GeneralButton: View {
                 }
             }
         }
+        .disabled(!shouldEnable)
         .frame(maxWidth: isLoading ? 52 : .infinity)
     }
 }
@@ -73,6 +75,6 @@ struct CircleLoadingView: View {
 
 
 #Preview {
-    GeneralButton(title: "Login", isLoading: .constant(true)) {
+    GeneralButton(title: "Login", shouldEnable: true, isLoading: .constant(true)) {
     }
 }
