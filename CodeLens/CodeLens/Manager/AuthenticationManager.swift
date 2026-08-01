@@ -65,15 +65,19 @@ class AuthenticationManager: ObservableObject {
             guard let self else { return }
             if let error = error {
                 print("Error during login - \(error)")
+                completion(error, nil)
+                return
             }
             guard let userID = result?.user.uid else {
                 print("Error during Login")
+                completion(nil, "Error during Login")
                 return
             }
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
                 self.isUserLoggedIn = true
             }
+            completion(nil, "SUCCESS")
             print("Login successful", userID)
         }
     }

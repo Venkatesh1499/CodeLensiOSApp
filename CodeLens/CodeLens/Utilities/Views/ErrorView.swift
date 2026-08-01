@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ErrorView: View {
     
-    @Environment(\.dismiss) var dismiss
+    var title: String
+    var subTitle: String
+    var onTapAction: (() -> Void)?
     
     var body: some View {
 //        ZStack {
@@ -27,11 +29,11 @@ struct ErrorView: View {
                         .padding(8)
                     
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Review request failed")
+                        Text(title)
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(Color(.white).opacity(0.9))
                         
-                        Text("Something went wrong. Please try again.")
+                        Text(subTitle)
                             .font(.system(size: 12))
                             .foregroundStyle(Color(.white).opacity(0.8))
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -39,10 +41,16 @@ struct ErrorView: View {
                     
                     Spacer()
                     
-                    Image(systemName: "arrow.clockwise")
-                        .font(.system(size: 18))
-                        .foregroundStyle(.red)
-                        .padding(.trailing, 5)
+                    Button {
+                        onTapAction?()
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                            .font(.system(size: 18))
+                            .foregroundStyle(.red)
+                            .padding(.trailing, 5)
+                    }
+
+                    
 //                    Text("Retry")
 //                        .font(.system(size: 16, weight: .medium))
 //                        .foregroundStyle(.red)
@@ -53,6 +61,7 @@ struct ErrorView: View {
                     
                 }
                 .padding(8)
+//                .blur(radius: 10)
                 .background(
                     RoundedRectangle(cornerRadius: 14)
                         .fill(Color.red.opacity(0.15))
@@ -69,5 +78,5 @@ struct ErrorView: View {
 }
 
 #Preview {
-    ErrorView()
+    ErrorView(title: "Review request failed", subTitle: "Something went wrong please try again")
 }

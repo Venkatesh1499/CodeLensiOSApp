@@ -19,11 +19,11 @@ struct AuthView: View {
                 SplashScreenAnimation()
             } else {
                 if authManager.isUserLoggedIn {
-//                    if true {
-//                        LanguageSelectionView()
-//                    } else {
-//                        // main code view will come here
-//                    }
+                    //                    if true {
+                    //                        LanguageSelectionView()
+                    //                    } else {
+                    //                        // main code view will come here
+                    //                    }
                     LanguageSelectionView()
                 } else {
                     LoginView()
@@ -44,56 +44,83 @@ struct CreateAccountView: View {
     @StateObject var viewModel = CreateAccountViewModel()
     
     var body: some View {
-        ScrollView {
+        ZStack {
+            Color(hex: "#F3F6FA")
+            LinearGradient(
+                colors: [
+                    Color(hex: "#0F172A"),
+                    Color(hex: "#1E293B")
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            
             VStack {
-                Image("signupBackground")
-                    .resizable()
-                    .scaledToFit()
                 
-                VStack(spacing: 20) {
-                    Text("Create Account")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .padding(.bottom)
+//                Spacer()
+                
+                ScrollView {
                     
-                    TextFieldView(image: "person",
-                                  placeHolder: "Name",
-                                  value: $viewModel.name)
-                    
-                    TextFieldView(image: "envelope",
-                                  placeHolder: "Email",
-                                  value: $viewModel.email)
-                    
-                    TextFieldView(image: "lock",
-                                  placeHolder: "Password",
-                                  isSecureTextField: true,
-                                  value: $viewModel.password)
-                    
-                    TextFieldView(image: "lock",
-                                  placeHolder: "Confirm password",
-                                  isSecureTextField: true,
-                                  value: $viewModel.confirmPassword)
-                    
-                    
-                    GeneralButton(title: "Sign Up") {
-                        viewModel.isLoading.toggle()
-                        AuthenticationManager.shared.signUp(name: viewModel.name, email: viewModel.email, password: viewModel.password) { error, result in
-                            viewModel.isLoading.toggle()
-                            
-                            if let error = error {
-                                print("Error during signIn", error)
-                                return
+                    VStack {
+                        //                    Image("backdrop4")
+                        //                        .resizable()
+                        //                        .scaledToFit()
+                        //                        .frame(height: 300)
+                        
+                        VStack(spacing: 20) {
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Build better code with CodeLens")
+                                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                                    .foregroundStyle(.white)
+                                
+                                Text("Create an account to get personalized code insights")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundStyle(Color(hex: "#94A3B8"))
+                                    .padding(.bottom, 5)
                             }
                             
-                            if result != "Error during signIn" {
-                                print("Successfully signin")
+                            TextFieldView(image: "person",
+                                          placeHolder: "Name",
+                                          value: $viewModel.name)
+                            
+                            TextFieldView(image: "envelope",
+                                          placeHolder: "Email",
+                                          value: $viewModel.email)
+                            
+                            TextFieldView(image: "lock",
+                                          placeHolder: "Password",
+                                          isSecureTextField: true,
+                                          value: $viewModel.password)
+                            
+                            TextFieldView(image: "lock",
+                                          placeHolder: "Confirm password",
+                                          isSecureTextField: true,
+                                          value: $viewModel.confirmPassword)
+                            
+                            
+                            GeneralButton(title: "Sign Up", isLoading: $viewModel.isLoading) {
+                                viewModel.isLoading.toggle()
+                                AuthenticationManager.shared.signUp(name: viewModel.name, email: viewModel.email, password: viewModel.password) { error, result in
+                                    viewModel.isLoading.toggle()
+                                    
+                                    if let error = error {
+                                        print("Error during signIn", error)
+                                        return
+                                    }
+                                    
+                                    if result != "Error during signIn" {
+                                        print("Successfully signin")
+                                    }
+                                }
                             }
+                            .padding(.vertical)
                         }
+                        .padding()
+                        .background()
                     }
-                    .padding(.vertical)
-                    
-                    Spacer()
+                    //                Spacer()
                 }
-                .padding()
             }
         }
     }

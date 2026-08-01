@@ -34,36 +34,6 @@
             endingLineNumber = "66"
             landmarkName = "initiateAPICall(with:requestInput:method:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - c8c902867e8c37bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-               <Location
-                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - 4877a83793b369b8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,9 +46,41 @@
             filePath = "CodeLens/Manager/AuthenticationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "logout()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "865256B3-0000-41D0-AF1B-97667F1CFF52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeLens/Manager/AuthenticationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "login(email:password:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9D382BF9-FF25-465D-9CE6-AB0C7D95DD52"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CodeLens/Manager/AuthenticationManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "login(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

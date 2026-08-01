@@ -14,4 +14,7 @@ class CreateAccountViewModel: ObservableObject {
     @Published var confirmPassword: String = ""
     
     @Published var isLoading: Bool = false
+    
+    @Published var shouldShowSuccess: Bool = false
+    @Published var shouldShowError: Bool = false
 }

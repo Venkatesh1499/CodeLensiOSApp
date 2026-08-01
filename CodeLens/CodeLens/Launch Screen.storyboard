@@ -15,28 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
                                 <rect key="frame" x="0.0" y="832" width="393" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreen" translatesAutoresizingMaskIntoConstraints="NO" id="mgy-SO-lj4">
-                                <rect key="frame" x="86.666666666666686" y="316" width="220" height="220"/>
+                                <rect key="frame" x="71.666666666666686" y="301" width="250" height="250"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="03p-We-Pdn"/>
-                                    <constraint firstAttribute="width" constant="220" id="1te-yJ-Q1c"/>
+                                    <constraint firstAttribute="width" constant="250" id="0Iw-Vf-tMi"/>
+                                    <constraint firstAttribute="height" constant="250" id="Dm7-g4-taS"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
-                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" symbolic="YES" id="SfN-ll-jLj"/>
-                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
-                            <constraint firstItem="mgy-SO-lj4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="b5h-aI-uIN"/>
-                            <constraint firstItem="mgy-SO-lj4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oHm-G4-ayY"/>
+                            <constraint firstItem="mgy-SO-lj4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="6qK-1d-Bya"/>
+                            <constraint firstItem="mgy-SO-lj4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Cqx-pU-S3p"/>
                         </constraints>
                     </view>
                 </viewController>

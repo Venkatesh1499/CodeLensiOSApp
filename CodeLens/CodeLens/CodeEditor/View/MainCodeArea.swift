@@ -48,7 +48,7 @@ struct MainCodeArea: View {
                         .overlay(alignment: .bottom) {
                             if viewModel.shouldShowError {
                                 withAnimation {
-                                    ErrorView()
+                                    ErrorView(title: "Review request failed", subTitle: "Something went wrong. Please try again.")
                                 }
                             }
                         }
