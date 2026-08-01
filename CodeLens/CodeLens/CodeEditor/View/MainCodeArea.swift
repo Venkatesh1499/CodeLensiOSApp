@@ -15,20 +15,15 @@ struct MainCodeArea: View {
     var body: some View {
         NavigationStack {
             ZStack(alignment: .leading) {
-                LinearGradient(
-                    colors: [
-                        Color(hex: "#0F172A"),
-                        Color(hex: "#1E293B")
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea(edges: .all)
+                CommonBackgroundView()
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 15) {
-                        // TODO: - Need to create a common component instead of titleAndSubtitle
-                        titleAndSubtitle
+                        TitleAndSubtitleView(title: "Paste your code",
+                                             titleSize: 32,
+                                             subtitle: "AI will review your code and suggest improvements.",
+                                             subtitleSize: 16,
+                                             spacing: 8)
                             .padding(.bottom, 5)
                         
                         Text("Languague")
@@ -51,25 +46,20 @@ struct MainCodeArea: View {
                             .onChange(of: viewModel.shouldShowError) {
                                 removeErrorView()
                             }
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
-//                        TextField("please enter", text: $temp)
                         
+                    }
+                    .padding()
+                }
+                .safeAreaInset(edge: .bottom) {
+                    VStack(spacing: 20) {
                         easyMenu
-                        
                         ReviewButton(shouldDisable: viewModel.code.isEmpty) {
                             Task {
                                 await viewModel.initiateReview()
                             }
                         }
-                        
                     }
-                    .padding()
+                    .padding(.horizontal)
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
                     print("Keyboard opened")
@@ -126,21 +116,10 @@ struct MainCodeArea: View {
         .cornerRadius(12)
     }
     
-    private var titleAndSubtitle: some View {
-        VStack(alignment: .leading, spacing: 5) {
-            Text("Paste your code")
-                .font(.system(size: 36, weight: .semibold, design: .rounded))
-                .foregroundStyle(.white)
-            Text("AI will review your code and suggest improvements.")
-                .font(.system(size: 15, weight: .regular))
-                .foregroundStyle(Color(hex: "#94A3B8"))
-        }
-    }
-    
     private var languageChangeView: some View {
         HStack(alignment: .firstTextBaseline) {
             HStack(spacing: 15) {
-                Image(viewModel.selectedLanguage)
+                Image.asset(viewModel.selectedLanguage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 32, height: 32)
@@ -242,17 +221,17 @@ struct ReviewButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 30, height: 30)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.white.opacity(shouldDisable ? 0.75 : 1))
                 
                 Text("Review")
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.white.opacity(shouldDisable ? 0.75 : 1))
                     .font(.system(size: 24))
                     .fontWeight(.medium)
                 Spacer()
             }
         }
         .padding()
-        .background(shouldDisable ? Color(.lightGray).opacity(0.6) : Color(hex: "#6048FF")) //B794F4
+        .background(Color(hex: "#6048FF").opacity(shouldDisable ? 0.45 : 1)) //B794F4
         .frame(maxWidth: .infinity, maxHeight: 50)
         .cornerRadius(12)
         .shadow(

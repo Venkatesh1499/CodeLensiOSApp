@@ -15,8 +15,7 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
-                BackgroundView()
+                CommonBackgroundView(animationRequired: true)
                 
                 VStack {
                     Spacer()
@@ -27,14 +26,20 @@ struct LoginView: View {
                         .frame(height: 300)
                     
                     VStack(spacing: 20) {
-                        Text("Hey, Welcome back")
-                            .font(.system(size: 30, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white)
-
-                        Text("Login to continue improving your code")
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Color(hex: "#94A3B8"))
-                            .padding(.bottom, 5)
+                        TitleAndSubtitleView(title: "Hey, Welcome back",
+                                             titleSize: 30,
+                                             subtitle: "Login to continue improving your code",
+                                             subtitleSize: 18,
+                                             alignment: .center)
+                        .padding(.bottom, 5)
+//                        Text("Hey, Welcome back")
+//                            .font(.system(size: 30, weight: .bold, design: .rounded))
+//                            .foregroundStyle(.white)
+//
+//                        Text("Login to continue improving your code")
+//                            .font(.system(size: 18, weight: .regular))
+//                            .foregroundStyle(Color(hex: "#94A3B8"))
+//                            .padding(.bottom, 5)
                         
                         TextFieldView(image: "envelope",
                                       placeHolder: "Email",
@@ -124,31 +129,6 @@ struct LoginView: View {
             }
         }
         .disabled(viewModel.isLoading)
-    }
-}
-
-struct BackgroundView: View {
-    var body: some View {
-        LinearGradient(
-            colors: [
-                Color(hex: "#0F172A"),
-                Color(hex: "#1E293B")
-            ],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-        .ignoresSafeArea()
-        .overlay(alignment: .topLeading) {
-            withAnimation {
-                ForEach([220, 300, 380], id: \.self) { size in
-                    Circle()
-                        .fill(.white.opacity(0.01))
-                        .stroke(Color.white.opacity(0.08), lineWidth: 1)
-                        .frame(width: CGFloat(size), height: CGFloat(size))
-                }
-                .offset(x: 180, y: -180)
-            }
-        }
     }
 }
 

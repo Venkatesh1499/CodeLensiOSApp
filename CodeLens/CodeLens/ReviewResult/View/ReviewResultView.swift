@@ -12,15 +12,10 @@ struct ReviewResultView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(hex: "#111827").opacity(0.95)
-                    .ignoresSafeArea(edges: .all)
+                CommonBackgroundView()
                 
                 VStack {
                     VStack(spacing: 10) {
-                        Text("Code Review Result")
-                            .foregroundStyle(Color(.gray))
-                            .font(.system(size: 18))
-                        
                         // TODO: - Need to write a func that determines the severity
                         Image(systemName: codeReviewResponse?.review.overallScore ?? 0 <= 6  ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
                             .font(.system(size: 72))
@@ -52,7 +47,7 @@ struct ReviewResultView: View {
                     
                     Spacer()
                     
-                    reviewButton                        
+                    improvedCodeButton
                 }
                 .padding()
             }
@@ -73,7 +68,7 @@ struct ReviewResultView: View {
         }
     }
     
-    private var reviewButton: some View {
+    private var improvedCodeButton: some View {
         Button {
             shouldNavigateToImporvedCode.toggle()
         } label: {

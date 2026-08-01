@@ -40,41 +40,29 @@ struct CreateAccountView: View {
     
     var body: some View {
         ZStack {
-            LinearGradient(
-                colors: [
-                    Color(hex: "#0F172A"),
-                    Color(hex: "#1E293B")
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            .overlay(alignment: .topLeading) {
-                withAnimation {
-                    ForEach([220, 300, 380], id: \.self) { size in
-                        Circle()
-                            .fill(.white.opacity(0.01))
-                            .stroke(Color.white.opacity(0.08), lineWidth: 1)
-                            .frame(width: CGFloat(size), height: CGFloat(size))
-                    }
-                    .offset(x: 180, y: -180)
-                }
-            }.animation(.easeInOut(duration: 1.0))
+            CommonBackgroundView(animationRequired: true)
+            .animation(.easeInOut(duration: 1.0))
             
             
             VStack(alignment: .leading, spacing: 25) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Build better code with CodeLens")
-                        .font(.system(size: 30, weight: .bold, design: .rounded))
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(.white)
-                    
-                    Text("Create an account to get personalized code insights")
-                        .font(.system(size: 18, weight: .regular))
-                        .multilineTextAlignment(.leading)
-                        .foregroundStyle(Color(hex: "#94A3B8"))
-                }
+                TitleAndSubtitleView(title: "Build better code with CodeLens",
+                                     titleSize: 30,
+                                     subtitle: "Create an account to get personalized code insights",
+                                     subtitleSize: 18)
                 .padding(5)
+//                VStack(alignment: .leading, spacing: 10) {
+//                    
+//                    Text("Build better code with CodeLens")
+//                        .font(.system(size: 30, weight: .bold, design: .rounded))
+//                        .multilineTextAlignment(.leading)
+//                        .foregroundStyle(.white)
+//                    
+//                    Text("Create an account to get personalized code insights")
+//                        .font(.system(size: 18, weight: .regular))
+//                        .multilineTextAlignment(.leading)
+//                        .foregroundStyle(Color(hex: "#94A3B8"))
+//                }
+//                .padding(5)
                 
                 TextFieldView(image: "person",
                               placeHolder: "Name",

@@ -101,16 +101,16 @@ struct CodeEditor: UIViewRepresentable {
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
 
-            DispatchQueue.main.async {
-                guard let selectedRange = textView.selectedTextRange else { return }
-
-                let caretRect = textView.caretRect(for: selectedRange.end)
-
-                textView.scrollRectToVisible(
-                    caretRect.insetBy(dx: -20, dy: 0),
-                    animated: false
-                )
-            }
+//            DispatchQueue.main.async {
+//                guard let selectedRange = textView.selectedTextRange else { return }
+//
+//                let caretRect = textView.caretRect(for: selectedRange.end)
+//
+//                textView.scrollRectToVisible(
+//                    caretRect.insetBy(dx: -20, dy: 0),
+//                    animated: false
+//                )
+//            }
         }
     }
 }

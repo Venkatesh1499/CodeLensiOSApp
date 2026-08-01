@@ -15,7 +15,7 @@ struct PrimaryButton: View {
                 Spacer()
                 
                 Text(title)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.white.opacity(shouldDisable ? 0.75 : 1))
                     .font(.system(size: 20))
                     .fontWeight(.medium)
                     .padding(.leading, 50)
@@ -26,10 +26,10 @@ struct PrimaryButton: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 20, height: 20)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.white.opacity(shouldDisable ? 0.75 : 1))
                     .padding()
             }
-            .background(shouldDisable ? Color(.lightGray).opacity(0.6) : Color(hex: "#6048FF"))
+            .background(Color(hex: "#6048FF").opacity(shouldDisable ? 0.45 : 1))
             .frame(maxWidth: .infinity, maxHeight: 50)
             .cornerRadius(16)
             .shadow(
@@ -40,6 +40,7 @@ struct PrimaryButton: View {
             .padding(.top)
             .padding(.bottom, 0)
         }
+        .disabled(shouldDisable)
     }
 }
 
