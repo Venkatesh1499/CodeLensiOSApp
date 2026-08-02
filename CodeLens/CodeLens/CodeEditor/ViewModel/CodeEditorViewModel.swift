@@ -8,6 +8,8 @@ class CodeEditorViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
     
+    @Published var reviewLoading: Bool = false
+    
     @Published var shouldShowSplashScreen: Bool = false
     
     @State var quickActive: QuickAction? = nil
@@ -22,7 +24,7 @@ class CodeEditorViewModel: ObservableObject {
     var reviewAPIResponse: ReviewResponse? {
         didSet {
             guard let response = reviewAPIResponse else { return }
-            shouldNavigateToResultView.toggle()
+            shouldNavigateToResultView = true
             issues = response.review.issues
         }
     }
@@ -69,12 +71,14 @@ extension CodeEditorViewModel {
     func initiateReview() async {
         do {
             let input = CodeDetails(language: selectedLanguage, code: code)
+            reviewLoading = true
             let response: ReviewResponse = try await APIServiceManager.shared.initiateAPICall(with: EndPoint.review,
                                                                                               requestInput: input,
                                                                                               method: .post)
             reviewAPIResponse = response
-            print(response)
+            reviewLoading = false
         } catch {
+            reviewLoading = false
             shouldShowError.toggle()
             print(error.localizedDescription)
         }

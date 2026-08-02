@@ -61,16 +61,17 @@ struct ReviewResultView: View {
                     shouldShowLogoutPreconfirmation.toggle()
                 }
             }
-            .navigationDestination(isPresented: $shouldNavigateToImporvedCode) {
-                ImprovedCodeView(code: codeReviewResponse?.review.improvedCode ?? "",
-                                 language: language)
-            }
+        }
+        .background(Color.black)
+        .navigationDestination(isPresented: $shouldNavigateToImporvedCode) {
+            ImprovedCodeView(code: codeReviewResponse?.review.improvedCode ?? "",
+                             language: language)
         }
     }
     
     private var improvedCodeButton: some View {
         Button {
-            shouldNavigateToImporvedCode.toggle()
+            shouldNavigateToImporvedCode = true
         } label: {
             HStack(spacing: 15) {
                 Spacer()

@@ -51,11 +51,15 @@ struct MainCodeArea: View {
                     .padding()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    VStack(spacing: 20) {
+                    VStack(alignment: .leading, spacing: 20) {
                         easyMenu
-                        ReviewButton(shouldDisable: viewModel.code.isEmpty) {
-                            Task {
-                                await viewModel.initiateReview()
+                        if viewModel.reviewLoading {
+                            LoadingAnimation()
+                        } else {
+                            ReviewButton(shouldDisable: viewModel.code.isEmpty) {
+                                Task {
+                                    await viewModel.initiateReview()
+                                }
                             }
                         }
                     }
@@ -73,6 +77,8 @@ struct MainCodeArea: View {
                 }
             }
         }
+        .background(Color.black)
+        .disabled(viewModel.reviewLoading)
         .logoutButton(title: "Code editor") {
             viewModel.shouldShowLogoutPreconfirmation.toggle()
         }

@@ -1,8 +1,5 @@
 import SwiftUI
 
-
-import SwiftUI
-
 struct ImprovedCodeView: View {
 
     let code: String
@@ -27,6 +24,10 @@ struct ImprovedCodeView: View {
                     LanguageHeaderView(language: language, onCopy: copyCode)
                     CodePreview(code: code, language: language)
                 }
+                .toastModifier(
+                    message: "Copied",
+                    isShowing: $shouldShowToast
+                )
                 
                 ShareLink(item: code) {
                     ShareButton()
@@ -37,10 +38,6 @@ struct ImprovedCodeView: View {
             }
             .padding()
         }
-        .toastModifier(
-            message: "Copied",
-            isShowing: $shouldShowToast
-        )
     }
 
     private func copyCode() {

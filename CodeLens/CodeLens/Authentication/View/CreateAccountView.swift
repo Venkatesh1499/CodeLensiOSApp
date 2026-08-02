@@ -50,19 +50,6 @@ struct CreateAccountView: View {
                                      subtitle: "Create an account to get personalized code insights",
                                      subtitleSize: 18)
                 .padding(5)
-//                VStack(alignment: .leading, spacing: 10) {
-//                    
-//                    Text("Build better code with CodeLens")
-//                        .font(.system(size: 30, weight: .bold, design: .rounded))
-//                        .multilineTextAlignment(.leading)
-//                        .foregroundStyle(.white)
-//                    
-//                    Text("Create an account to get personalized code insights")
-//                        .font(.system(size: 18, weight: .regular))
-//                        .multilineTextAlignment(.leading)
-//                        .foregroundStyle(Color(hex: "#94A3B8"))
-//                }
-//                .padding(5)
                 
                 TextFieldView(image: "person",
                               placeHolder: "Name",
