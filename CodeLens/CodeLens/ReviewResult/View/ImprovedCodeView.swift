@@ -1,8 +1,5 @@
 import SwiftUI
 
-
-import SwiftUI
-
 struct ImprovedCodeView: View {
 
     let code: String
@@ -12,25 +9,35 @@ struct ImprovedCodeView: View {
 
     var body: some View {
         ZStack {
-            Color(hex: "#111827")
-                .ignoresSafeArea()
+            CommonBackgroundView(animationRequired: true)
 
-            VStack(spacing: 20) {
-
-                CodeHeaderView()
-
-                LanguageHeaderView(language: language, onCopy: copyCode)
+            VStack(alignment: .leading, spacing: 25) {
+                Spacer()
                 
-                CodePreview(code: code, language: language)
+                TitleAndSubtitleView(title: "Improved Code",
+                                     titleSize: 32,
+                                     subtitle: "Review and share the improved code",
+                                     subtitleSize: 18)
+                    .padding(.bottom)
+
+                VStack(spacing: 0) {
+                    LanguageHeaderView(language: language, onCopy: copyCode)
+                    CodePreview(code: code, language: language)
+                }
+                .toastModifier(
+                    message: "Copied",
+                    isShowing: $shouldShowToast
+                )
+                
+                ShareLink(item: code) {
+                    ShareButton()
+                }
+                .padding(.vertical)
 
                 Spacer()
             }
             .padding()
         }
-        .toastModifier(
-            message: "Copied",
-            isShowing: $shouldShowToast
-        )
     }
 
     private func copyCode() {
@@ -43,38 +50,6 @@ struct ImprovedCodeView: View {
             withAnimation {
                 shouldShowToast = false
             }
-        }
-    }
-}
-
-struct CodeHeaderView: View {
-
-    var body: some View {
-        HStack(spacing: 20) {
-            Image(systemName: "chevron.left.forwardslash.chevron.right")
-                .font(.system(size: 26))
-                .foregroundStyle(.white)
-                .padding(8)
-                .background {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.white)
-                }
-            VStack(alignment: .leading, spacing: 6) {
-                Text("Improved Code")
-                    .font(.system(size: 28, weight: .semibold))
-                    .foregroundStyle(.white)
-
-                Text("Review and copy the improved code")
-                    .font(.caption)
-                    .foregroundStyle(.gray)
-            }
-
-            Spacer()
-        }
-        .padding()
-        .background {
-            RoundedRectangle(cornerRadius: 14)
-                .stroke(.white.opacity(0.3))
         }
     }
 }
@@ -132,7 +107,7 @@ struct CodePreview: View {
                 VStack {
                     ForEach(0..<lines.count, id: \.self) { num in
                         HStack(alignment: .lastTextBaseline) {
-                            Text("\(num + 1) |")
+                            Text("\(num + 1) ")
                                 .foregroundStyle(Color(hex: "#858585"))
                                 .font(.system(size: 16, weight: .regular, design: .monospaced))
                                 .frame(maxWidth: 50, alignment: .trailing)
@@ -143,13 +118,40 @@ struct CodePreview: View {
                            shouldSelectAll: .constant(false),
                            language: language,
                            isEditable: false)
-//                    .fixedSize(horizontal: true, vertical: false)
             }
             .padding(.bottom, 15)
         }
         .background(Color(hex: "#1E1E1E"))
-        .frame(maxHeight: 380)
+        .frame(maxHeight: 400)
         .cornerRadius(12)
+    }
+}
+
+struct ShareButton: View {
+        
+    var body: some View {
+        HStack(spacing: 20) {
+            Spacer()
+            Image(systemName: "square.and.arrow.up")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+                .foregroundStyle(.white)
+            
+            Text("Share")
+                .foregroundStyle(.white)
+                .font(.system(size: 24))
+                .fontWeight(.medium)
+            Spacer()
+        }
+        .padding()
+        .background(Color(hex: "#7C3AED")) //B794F4
+        .frame(maxWidth: .infinity, maxHeight: 50)
+        .cornerRadius(12)
+        .shadow(
+            color: Color(hex: "#9A6BFF").opacity(0.35),
+            radius: 16
+        )
     }
 }
 

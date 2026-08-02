@@ -20,32 +20,16 @@ struct LanguageSelectionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // TODO: - Need to look into colors
-//                LinearGradient(colors: [
-//                    Color(hex: "#080B23"),
-//                    Color(hex: "#10163C"),
-//                    Color(hex: "#1A1748")
-//                ], startPoint: .topLeading,
-//                               endPoint: .bottomTrailing)
-                LinearGradient(
-                    colors: [
-                        Color(hex: "#0F172A"),
-                        Color(hex: "#1E293B")
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea(edges: .all)
+                CommonBackgroundView()
+                
                 VStack(alignment: .leading, spacing: 10) {
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Choose Language")
-                            .font(.system(size: 32, weight: .bold, design: .rounded))
-                            .foregroundStyle(.white)
-                        Text("Select the primary language of your code so we can tailor the Al review experience.")
-                            .font(.system(size: 20, weight: .regular))
-                            .foregroundStyle(Color(hex: "#94A3B8"))
-                    }
-                    .padding()
+                    TitleAndSubtitleView(title: "Choose Language",
+                                         titleSize: 32,
+                                         subtitle: "Select the primary language of your code so we can tailor the Al review experience.",
+                                         subtitleSize: 18,
+                                         spacing: 8)
+                    .padding(.horizontal)
+                    
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 5) {
                             ForEach(viewModel.languages) { language in
@@ -92,7 +76,7 @@ struct LanguageSelectionView: View {
                 }
                 .overlay(alignment: .bottom) {
                     PrimaryButton(title: "Continue", image: "arrow.forward", shouldDisable: viewModel.selectedLanguage == "") {
-                        viewModel.shouldNavigateToCodeEditor.toggle()
+                        viewModel.shouldNavigateToCodeEditor = true
                     }
                 }
             }
@@ -121,6 +105,7 @@ struct LanguageSelectionView: View {
                 MainCodeArea(selectedLanguage: viewModel.selectedLanguage)
             }
         }
+        .background(Color.black)
     }
 }
 
