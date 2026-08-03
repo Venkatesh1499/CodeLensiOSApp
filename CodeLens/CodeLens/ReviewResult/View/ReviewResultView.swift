@@ -16,7 +16,6 @@ struct ReviewResultView: View {
                 
                 VStack {
                     VStack(spacing: 10) {
-                        // TODO: - Need to write a func that determines the severity
                         Image(systemName: codeReviewResponse?.review.overallScore ?? 0 <= 6  ? "exclamationmark.triangle.fill" : "checkmark.circle.fill")
                             .font(.system(size: 72))
                             .foregroundStyle(codeReviewResponse?.review.overallScore ?? 0 <= 6 ? .red : .green)
@@ -24,7 +23,7 @@ struct ReviewResultView: View {
                         HStack(alignment: .center, spacing: 0) {
                             Text("Overall score is \(String(describing: codeReviewResponse?.review.overallScore ?? 0)) out of 10")
                                 .font(.system(size: 24, weight: .medium))
-                            //                            .foregroundStyle(codeReviewResponse?.review.overallScore ?? 0 <= 6 ? .red : .green)
+
                                 .foregroundStyle(.white)
                         }
                         
@@ -158,9 +157,6 @@ struct CategoryDetailsView: View {
                     DetailsView(image: "xmark.circle.fill", title: "Severity", subtitle: details[0].severity, isFromError: true)
                     DetailsView(image: "text.document", title: "Description", subtitle: details[0].description)
                     DetailsView(image: "lightbulb.max", title: "Recomendation", subtitle: details[0].recommendation)
-//                    DetailsView(image: "chevron.left.forwardslash.chevron.right", title: "Code", subtitle: details[0].exampleFix)
-//                    CodeEditor(text: $code, shouldSelectAll: $shouldSelectCode)
-//                        .fixedSize(horizontal: true, vertical: false)
                 }
                 .padding(10)
                 .background(
@@ -169,7 +165,7 @@ struct CategoryDetailsView: View {
                         topLeadingRadius: 0,
                         bottomLeadingRadius: 10,
                         bottomTrailingRadius: 10,
-                        topTrailingRadius: 0)/*.stroke(Color.red, lineWidth: 2)*/
+                        topTrailingRadius: 0)
                 )
             }
         }

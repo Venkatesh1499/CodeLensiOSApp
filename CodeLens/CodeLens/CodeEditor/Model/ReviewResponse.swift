@@ -1,10 +1,3 @@
-//
-//  ReviewResponse.swift
-//  MainCodeArea
-//
-//  Created by Venkatesh Nimmalapudi on 20/07/26.
-//
-
 struct ReviewResponse: Codable {
     let review: ReviewDetails
     let success: Bool
@@ -25,26 +18,6 @@ struct ReviewDetails: Codable {
         case severity
     }
 }
-
-//struct IssueDetails: Codable {
-//    let testing: [CategoryDetails]
-//    let readability: [CategoryDetails]
-//    let security: [CategoryDetails]
-//    let performance: [CategoryDetails]
-//    let maintainability: [CategoryDetails]
-//    let correctness: [CategoryDetails]
-//    let bestPractices: [CategoryDetails]
-//    
-//    enum CodingKeys: String, CodingKey {
-//        case testing
-//        case readability
-//        case security
-//        case performance
-//        case maintainability
-//        case correctness
-//        case bestPractices = "best_practices"
-//    }
-//}
 
 struct CategoryDetails: Codable, Hashable {
     let title: String
@@ -70,17 +43,3 @@ struct SeverityDetails: Codable {
     let low: Int
     let medium: Int
 }
-
-//extension ReviewResponse {
-//    func getIssuesList() -> [String : [CategoryDetails]] {
-//        return ["Testing": self.review.issues.testing,
-//                "readability": self.review.issues.readability,
-//                "security": self.review.issues.security,
-//                "performance": self.review.issues.performance,
-//                "maintainability": self.review.issues.maintainability,
-//                "correctness": self.review.issues.correctness,
-//                "bestPractices": self.review.issues.bestPractices]
-//    }
-//    
-//    
-//}

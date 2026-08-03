@@ -1,9 +1,3 @@
-//
-//  AnimationView.swift
-//  MainCodeArea
-//
-//  Created by Venkatesh Nimmalapudi on 22/07/26.
-//
 import SwiftUI
 
 struct AnimationView: View {

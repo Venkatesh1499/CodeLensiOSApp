@@ -1,10 +1,3 @@
-//
-//  ToastView.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 28/07/26.
-//
-
 import SwiftUI
 
 struct ToastView: View {

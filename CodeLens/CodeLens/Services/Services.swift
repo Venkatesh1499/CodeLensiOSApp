@@ -1,9 +1,3 @@
-//
-//  Services.swift
-//  MainCodeArea
-//
-//  Created by Venkatesh Nimmalapudi on 20/07/26.
-//
 import Foundation
 
 enum Envirornment {

@@ -146,7 +146,7 @@ struct ShareButton: View {
             Spacer()
         }
         .padding()
-        .background(Color(hex: "#7C3AED")) //B794F4
+        .background(Color(hex: "#7C3AED"))
         .frame(maxWidth: .infinity, maxHeight: 50)
         .cornerRadius(12)
         .shadow(

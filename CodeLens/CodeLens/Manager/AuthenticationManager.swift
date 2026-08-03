@@ -1,10 +1,3 @@
-//
-//  AuthenticationViewModel.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 25/07/26.
-//
-
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
@@ -37,9 +30,6 @@ class AuthenticationManager: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.isUserLoggedIn = true
-            }
             completion(nil, userID)
             
             let user = User(uid: userID,
@@ -74,11 +64,10 @@ class AuthenticationManager: ObservableObject {
                 return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                 self.isUserLoggedIn = true
             }
             completion(nil, "SUCCESS")
-            print("Login successful", userID)
         }
     }
     
@@ -98,7 +87,6 @@ class AuthenticationManager: ObservableObject {
         currentUser.delete { error in
             guard let error = error else {
                 completion(nil, "Successfull")
-                print("Account deleted succesfully")
                 return
             }
             

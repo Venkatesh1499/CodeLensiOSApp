@@ -8,19 +8,15 @@ struct LogoutPreConfirmationPopUp: View {
     var body: some View {
         VStack(spacing: 24) {
             
-            // Icon
             ZStack {
                 Circle()
                     .fill(Color.red.opacity(0.12))
                     .frame(width: 64, height: 64)
-                
                 Image(systemName: "power")
                     .font(.system(size: 28, weight: .semibold))
                     .foregroundStyle(.red)
             }
             
-            
-            // Title + Message
             VStack(spacing: 8) {
                 Text("Logout?")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -32,10 +28,7 @@ struct LogoutPreConfirmationPopUp: View {
                     .multilineTextAlignment(.center)
             }
             
-            
-            // Buttons
             VStack(spacing: 12) {
-                
                 Button {
                     AuthenticationManager.shared.logout()
                     onTapLogout()
@@ -50,7 +43,6 @@ struct LogoutPreConfirmationPopUp: View {
                                 .fill(.red)
                         )
                 }
-                
                 
                 Button {
                     onTapCancel()

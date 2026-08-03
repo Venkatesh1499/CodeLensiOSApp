@@ -1,10 +1,3 @@
-//
-//  FormatResponse.swift
-//  MainCodeArea
-//
-//  Created by Venkatesh Nimmalapudi on 20/07/26.
-//
-
 struct FormatResponse: Codable {
     let error: String?
     let formattedCode: String?

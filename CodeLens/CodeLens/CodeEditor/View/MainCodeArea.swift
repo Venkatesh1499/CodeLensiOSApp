@@ -260,11 +260,3 @@ struct ReviewButton: View {
 #Preview {
     MainCodeArea(selectedLanguage: "Python")
 }
-
-
-//                TextEditor(text: $text)
-//                    .font(.system(size: 16, design: .monospaced))
-//                    .textInputAutocapitalization(.never)
-//                    .autocorrectionDisabled()
-//                    .scrollClipDisabled(true)
-//                    .scrollDisabled(true)

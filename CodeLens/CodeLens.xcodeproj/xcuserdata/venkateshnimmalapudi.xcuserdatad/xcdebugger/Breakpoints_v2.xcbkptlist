@@ -30,40 +30,10 @@
             filePath = "CodeLens/Services/APIServiceManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "initiateAPICall(with:requestInput:method:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - c8c902867e8c37bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-               <Location
-                  uuid = "BA163244-55B0-4F0D-9582-75E00833C7C1 - 4877a83793b369b8"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(4) suspend resume partial function for CodeLens.APIServiceManager.initiateAPICall&lt;&#x3c4;_0_0 where &#x3c4;_0_0: Swift.Decodable&gt;(with: Swift.String, requestInput: CodeLens.RequestInput, method: CodeLens.Method) async throws -&gt; &#x3c4;_0_0"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/Services/APIServiceManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,9 +46,9 @@
             filePath = "CodeLens/Manager/AuthenticationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "logout()"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "login(email:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -92,8 +62,8 @@
             filePath = "CodeLens/Utilities/Views/TextFieldView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -108,8 +78,8 @@
             filePath = "CodeLens/Utilities/Views/TextFieldView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -128,50 +98,6 @@
             endingLineNumber = "94"
             landmarkName = "initiateFormatting(for:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8FEEE6DD-6B45-457D-AC0E-550F186853E4 - bdc51b9c2a1bbe49"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(1) suspend resume partial function for CodeLens.CodeEditorViewModel.initiateFormatting(for: CodeLens.RequestInput) async -&gt; ()"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/CodeEditor/ViewModel/CodeEditorViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94">
-               </Location>
-               <Location
-                  uuid = "8FEEE6DD-6B45-457D-AC0E-550F186853E4 - 744d5e147b15df3f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(2) await resume partial function for CodeLens.CodeEditorViewModel.initiateFormatting(for: CodeLens.RequestInput) async -&gt; ()"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/CodeEditor/ViewModel/CodeEditorViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94">
-               </Location>
-               <Location
-                  uuid = "8FEEE6DD-6B45-457D-AC0E-550F186853E4 - 8a7941b04c407a57"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(3) suspend resume partial function for CodeLens.CodeEditorViewModel.initiateFormatting(for: CodeLens.RequestInput) async -&gt; ()"
-                  moduleName = "CodeLens.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/venkateshnimmalapudi/Desktop/CodeLensiOSApp/CodeLens/CodeLens/CodeEditor/ViewModel/CodeEditorViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

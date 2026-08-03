@@ -1,9 +1,3 @@
-//
-//  AuthenticationViewModel.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 19/07/26.
-//
 import Combine
 import Foundation
 
