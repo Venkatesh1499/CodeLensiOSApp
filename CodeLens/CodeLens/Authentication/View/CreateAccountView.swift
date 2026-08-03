@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 19/07/26.
-//
-
 import SwiftUI
 
 struct AuthView: View {
@@ -97,7 +90,8 @@ struct CreateAccountView: View {
                             viewModel.isLoading = true
                         }
                         AuthenticationManager.shared.signUp(name: viewModel.name, email: viewModel.email, password: viewModel.password) { error, result in
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                            // delay is just to show case the animations that will happen and nothing else
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                                 if error != nil || result == "Error during signIn" {
                                     viewModel.shouldShowError = true
                                 } else {

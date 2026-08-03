@@ -1,10 +1,3 @@
-//
-//  LanguageSearchEmptyState.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 03/08/26.
-//
-
 import SwiftUI
 
 struct LanguageSearchEmptyState: View {

@@ -101,17 +101,6 @@ struct LanguageSelectionView: View {
                     viewModel.shouldShowLogoutPreconfirmation.toggle()
                 }
             }
-//            .overlay(alignment: .center) {
-//                if viewModel.shouldShowLogoutPreconfirmation {
-//                    withAnimation {
-//                        LogoutPreConfirmationPopUp {
-//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
-//                        } onTapCancel: {
-//                            viewModel.shouldShowLogoutPreconfirmation.toggle()
-//                        }
-//                    }
-//                }
-//            }
             .navigationDestination(isPresented: $viewModel.shouldNavigateToCodeEditor) {
                 MainCodeArea(selectedLanguage: viewModel.selectedLanguage)
             }

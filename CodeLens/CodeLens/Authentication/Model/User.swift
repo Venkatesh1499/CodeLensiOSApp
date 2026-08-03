@@ -1,10 +1,3 @@
-//
-//  AuthenticationModel.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 19/07/26.
-//
-
 import Foundation
 
 struct User: Codable {

@@ -10,15 +10,11 @@ struct NavigationBarViews: ViewModifier {
             content
             
                 .navigationTitle(title)
-//                .toolbarBackgroundVisibility(.visible, for: .navigationBar)
-//                .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
-//                .toolbarBackground(.visible, for: .navigationBar)
                 .toolbarColorScheme(.dark, for: .navigationBar)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem {
                         Button {
-                            print("sadfghjkljhgfdsfghjk")
                             onTapAction?()
                         } label: {
                             Image(systemName: "power")

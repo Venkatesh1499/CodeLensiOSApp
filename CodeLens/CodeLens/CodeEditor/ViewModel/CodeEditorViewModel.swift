@@ -109,7 +109,6 @@ extension CodeEditorViewModel {
     func handleFormatAPIResponse(response: FormatResponse) {
         if let error = response.error {
             shouldShowError.toggle()
-            print(error)
         } else if let formattedCode = response.formattedCode {
             DispatchQueue.main.async {
                 self.code = formattedCode

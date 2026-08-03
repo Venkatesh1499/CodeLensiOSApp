@@ -1,9 +1,3 @@
-//
-//  CommonBackgroundView.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 02/08/26.
-//
 import SwiftUI
 
 struct CommonBackgroundView: View {

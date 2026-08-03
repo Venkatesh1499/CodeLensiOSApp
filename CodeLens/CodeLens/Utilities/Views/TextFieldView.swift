@@ -51,7 +51,6 @@ struct TextFieldView: View {
             .background {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(.white)
-                //                .stroke draws inside the .strokeBorder draws outside
                     .stroke(
                         !error.isEmpty && isTouched ? .red : .clear,
                         lineWidth: 1

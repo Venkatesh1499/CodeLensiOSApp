@@ -32,21 +32,11 @@ struct CodeEditor: UIViewRepresentable {
         textContainer.widthTracksTextView = false
         textContainer.lineBreakMode = .byClipping
 
-        // Make the text layout extremely wide
-//        textContainer.size = CGSize(
-//            width: CGFloat.greatestFiniteMagnitude,
-//            height: CGFloat.greatestFiniteMagnitude
-//        )
-
         textContainer.lineFragmentPadding = 0
         textView.textContainerInset = .zero
 
         textView.text = text
         textView.delegate = context.coordinator
-        
-//        DispatchQueue.main.async {
-//            textView.becomeFirstResponder()
-//        }
 
         textView.backgroundColor = UIColor(Color(hex: "#1E1E1E"))
 
@@ -107,17 +97,6 @@ struct CodeEditor: UIViewRepresentable {
         
         func textViewDidChange(_ textView: UITextView) {
             parent.text = textView.text
-
-//            DispatchQueue.main.async {
-//                guard let selectedRange = textView.selectedTextRange else { return }
-//
-//                let caretRect = textView.caretRect(for: selectedRange.end)
-//
-//                textView.scrollRectToVisible(
-//                    caretRect.insetBy(dx: -20, dy: 0),
-//                    animated: false
-//                )
-//            }
         }
     }
 }

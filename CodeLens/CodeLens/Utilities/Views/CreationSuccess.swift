@@ -1,10 +1,3 @@
-//
-//  CreationSuccess.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 01/08/26.
-//
-
 import SwiftUI
 
 struct CreationSuccessView: View {

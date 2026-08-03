@@ -1,10 +1,3 @@
-//
-//  CodeLensApp.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 19/07/26.
-//
-
 import SwiftUI
 import Firebase
 
