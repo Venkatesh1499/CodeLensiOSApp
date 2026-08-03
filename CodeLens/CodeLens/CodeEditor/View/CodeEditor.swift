@@ -6,6 +6,7 @@ struct CodeEditor: UIViewRepresentable {
     
     @Binding var text: String
     @Binding var shouldSelectAll: Bool
+    @Binding var shouldHideKeyboard: Bool
     
     var language: String
     var isEditable: Bool = true
@@ -83,6 +84,12 @@ struct CodeEditor: UIViewRepresentable {
                     width: CGFloat.greatestFiniteMagnitude,
                     height: CGFloat.greatestFiniteMagnitude
                 )
+        }
+        
+        if shouldHideKeyboard {
+            uiView.resignFirstResponder()
+        } else {
+            uiView.becomeFirstResponder()
         }
     }
     

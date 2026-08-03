@@ -16,10 +16,12 @@ struct TitleAndSubtitleView: View {
             Text(title)
                 .font(.system(size: titleSize, weight: .bold, design: .rounded))
                 .foregroundStyle(.white)
+                .fixedSize(horizontal: false, vertical: true)
 
             Text(subtitle)
                 .font(.system(size: subtitleSize, weight: .regular))
                 .foregroundStyle(Color(hex: "#94A3B8"))
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }

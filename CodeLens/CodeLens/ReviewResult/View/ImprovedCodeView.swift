@@ -116,6 +116,7 @@ struct CodePreview: View {
                 }
                 CodeEditor(text: .constant(code),
                            shouldSelectAll: .constant(false),
+                           shouldHideKeyboard: .constant(false),
                            language: language,
                            isEditable: false)
             }

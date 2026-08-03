@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Languages
-//
-//  Created by Venkatesh Nimmalapudi on 15/07/26.
-//
-
 import SwiftUI
 
 struct LanguageSelectionView: View {
@@ -26,57 +19,75 @@ struct LanguageSelectionView: View {
                     TitleAndSubtitleView(title: "Choose Language",
                                          titleSize: 32,
                                          subtitle: "Select the primary language of your code so we can tailor the Al review experience.",
-                                         subtitleSize: 18,
+                                         subtitleSize: 15,
                                          spacing: 8)
                     .padding(.horizontal)
                     
-                    ScrollView {
-                        LazyVGrid(columns: columns, spacing: 5) {
-                            ForEach(viewModel.languages) { language in
-                                Card(language: language)
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(
-                                                viewModel.selected == language.id ? Color(hex: "#6048FF") : Color.white.opacity(0.12),
-                                                lineWidth: 1
-                                            )
-                                    }
-                                    .overlay(alignment: .topTrailing) {
-                                        if viewModel.selected == language.id {
-                                            Image(systemName: "checkmark")
-                                                .font(.caption.weight(.bold))
-                                                .foregroundStyle(.white)
-                                                .frame(width: 22, height: 22)
-                                                .background(
-                                                    Circle()
-                                                        .fill(Color(hex: "#6048FF"))
-                                                )
-                                                .padding(5)
-                                        }
-                                    }
-                                    .shadow(
-                                        color: Color(hex: "#9A6BFF").opacity(0.45),
-                                        radius: 0.5
-                                    )
-                                    .padding(.vertical, 3)
-                                    .onTapGesture {
-                                        viewModel.selected = language.id
-                                        viewModel.selectedLanguage = language.name
-                                    }
+                    SearchField(searchText: $viewModel.searchText)
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                        .onChange(of: viewModel.searchText) {
+                            viewModel.showSearchResult()
+                        }
+                    
+                    if viewModel.languages.isEmpty {
+                        LanguageSearchEmptyState(searchedText: viewModel.searchText) {
+                            withAnimation {
+                                viewModel.searchText = ""
                             }
                         }
-                        .padding(.top)
-                        .padding(.horizontal)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    } else {
+                        ScrollView {
+                            LazyVGrid(columns: columns, spacing: 5) {
+                                ForEach(viewModel.languages) { language in
+                                    Card(language: language)
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    viewModel.selected == language.id ? Color(hex: "#6048FF") : Color.white.opacity(0.12),
+                                                    lineWidth: 1
+                                                )
+                                        }
+                                        .overlay(alignment: .topTrailing) {
+                                            if viewModel.selected == language.id {
+                                                Image(systemName: "checkmark")
+                                                    .font(.caption.weight(.bold))
+                                                    .foregroundStyle(.white)
+                                                    .frame(width: 22, height: 22)
+                                                    .background(
+                                                        Circle()
+                                                            .fill(Color(hex: "#6048FF"))
+                                                    )
+                                                    .padding(5)
+                                            }
+                                        }
+                                        .shadow(
+                                            color: Color(hex: "#9A6BFF").opacity(0.45),
+                                            radius: 0.5
+                                        )
+                                        .padding(.vertical, 3)
+                                        .onTapGesture {
+                                            viewModel.selected = language.id
+                                            viewModel.selectedLanguage = language.name
+                                        }
+                                }
+                            }
+                            .padding(.top)
+                            .padding(.horizontal)
+                        }
+                        .padding(.top, 5)
+                        .padding(.bottom, 60)
+                        .scrollIndicators(.hidden)
+                        .scrollBounceBehavior(.basedOnSize)
+                        .scrollDismissesKeyboard(.immediately)
                     }
-                    .padding(.top, 5)
-                    .padding(.bottom, 50 + 10)
-                    .scrollIndicators(.hidden)
-                    .scrollBounceBehavior(.basedOnSize)
-                    .scrollDismissesKeyboard(.immediately)
                 }
                 .overlay(alignment: .bottom) {
-                    PrimaryButton(title: "Continue", image: "arrow.forward", shouldDisable: viewModel.selectedLanguage == "") {
-                        viewModel.shouldNavigateToCodeEditor = true
+                    if !viewModel.languages.isEmpty {
+                        PrimaryButton(title: "Continue", image: "arrow.forward", shouldDisable: viewModel.selectedLanguage == "") {
+                            viewModel.shouldNavigateToCodeEditor = true
+                        }
                     }
                 }
             }

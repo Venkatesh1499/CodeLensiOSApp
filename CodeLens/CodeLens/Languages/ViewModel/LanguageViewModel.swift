@@ -10,15 +10,19 @@ import Combine
 class LanguageViewModel: ObservableObject {
     
     @Published var selectedLanguage: String = ""
+    @Published var searchText: String = ""
     @Published var shouldNavigateToCodeEditor: Bool = false
     @Published var shouldShowLogoutPreconfirmation: Bool = false
     
     var selected = UUID()
     
-    var languages: [Language] = []
+    var storedLanguages: [Language] = []
+    
+    @Published var languages: [Language] = []
     
     init() {
         self.languages = loadJsonData()
+        self.storedLanguages = languages
     }
     
     func loadJsonData() -> [Language] {
@@ -34,6 +38,14 @@ class LanguageViewModel: ObservableObject {
         } catch {
             print("error while decoding")
             return []
+        }
+    }
+    
+    func showSearchResult() {
+        if searchText.isEmpty {
+            languages = storedLanguages
+        } else {
+            languages = storedLanguages.filter { $0.name.contains(searchText) }
         }
     }
 }

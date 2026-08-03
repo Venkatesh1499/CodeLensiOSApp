@@ -12,6 +12,10 @@ class CodeEditorViewModel: ObservableObject {
     
     @Published var shouldShowSplashScreen: Bool = false
     
+    @Published var shouldHideEasyMenu: Bool = false
+    
+    @Published var shouldHideKeyboard: Bool = false
+    
     @State var quickActive: QuickAction? = nil
     
     @Published var shouldNavigateToResultView: Bool = false
@@ -48,7 +52,7 @@ class CodeEditorViewModel: ObservableObject {
                 self.code += UIPasteboard.general.string ?? ""
             }
         case .format:
-            let request = CodeDetails(language: selectedLanguage, code: code)
+            let request = CodeDetails(language: selectedLanguage.lowercased(), code: code)
             await initiateFormatting(for: request)
             break
         }
