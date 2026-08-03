@@ -56,7 +56,7 @@ struct CreateAccountView: View {
                               value: $viewModel.name,
                               isTouched: $viewModel.isNameTouched,
                               error: viewModel.name.validate(for: [.required]))
-                .onChange(of: viewModel.name) { _, _ in
+                .onChange(of: viewModel.name) { 
                     viewModel.isNameTouched = true
                 }
                 
@@ -65,7 +65,7 @@ struct CreateAccountView: View {
                               value: $viewModel.email,
                               isTouched: $viewModel.isEmailTouched,
                               error: viewModel.email.validate(for: [.required, .email]))
-                .onChange(of: viewModel.email) { _, _ in
+                .onChange(of: viewModel.email) { 
                     viewModel.isEmailTouched = true
                 }
                 
@@ -75,7 +75,7 @@ struct CreateAccountView: View {
                               value: $viewModel.password,
                               isTouched: $viewModel.isPasswordTouched,
                               error: viewModel.password.validate(for: [.required, .password]))
-                .onChange(of: viewModel.isPasswordTouched) { _, _ in
+                .onChange(of: viewModel.password) { 
                     viewModel.isPasswordTouched = true
                 }
                 
@@ -85,7 +85,7 @@ struct CreateAccountView: View {
                               value: $viewModel.confirmPassword,
                               isTouched: $viewModel.isConfirmPasswordTouched,
                               error: viewModel.confirmPassword.validate(for: [.required, .match(viewModel.password)]))
-                .onChange(of: viewModel.confirmPassword) { _, _ in
+                .onChange(of: viewModel.confirmPassword) { 
                     viewModel.isConfirmPasswordTouched = true
                 }
                 

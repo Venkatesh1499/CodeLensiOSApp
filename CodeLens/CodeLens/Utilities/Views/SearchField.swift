@@ -1,10 +1,3 @@
-//
-//  SearchField.swift
-//  CodeLens
-//
-//  Created by Venkatesh Nimmalapudi on 02/08/26.
-//
-
 import SwiftUI
 
 struct SearchField: View {
@@ -20,6 +13,7 @@ struct SearchField: View {
             TextField("",
                       text: $searchText,
                       prompt: Text("Search languages...").foregroundStyle(Color(.lightGray).opacity(0.8)))
+            .autocorrectionDisabled(true)
             .foregroundStyle(.white)
                 .frame(height: 50)
         }

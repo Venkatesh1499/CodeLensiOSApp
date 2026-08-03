@@ -51,30 +51,39 @@ struct MainCodeArea: View {
                     .padding()
                 }
                 .safeAreaInset(edge: .bottom) {
-                    VStack(alignment: .leading, spacing: 20) {
-                        easyMenu
-                        if viewModel.reviewLoading {
-                            LoadingAnimation()
-                        } else {
-                            ReviewButton(shouldDisable: viewModel.code.isEmpty) {
-                                Task {
-                                    await viewModel.initiateReview()
+                    if !viewModel.shouldHideEasyMenu {
+                        VStack(alignment: .leading, spacing: 20) {
+                            easyMenu
+                            if viewModel.reviewLoading {
+                                LoadingAnimation()
+                            } else {
+                                ReviewButton(shouldDisable: viewModel.code.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) {
+                                    Task {
+                                        await viewModel.initiateReview()
+                                    }
                                 }
                             }
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                    print("Keyboard opened")
+                    viewModel.shouldHideEasyMenu = true
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                    print("Keyboard closed")
+                    viewModel.shouldHideEasyMenu = false
                 }
                 
                 if viewModel.isLoading {
                     AnimationView()
                 }
+            }
+        }
+        .onTapGesture {
+            if viewModel.shouldHideEasyMenu {
+                viewModel.shouldHideKeyboard = true
+            } else {
+                viewModel.shouldHideKeyboard = false
             }
         }
         .background(Color.black)
@@ -114,6 +123,7 @@ struct MainCodeArea: View {
                 .frame(maxWidth: 50, alignment: .trailing)
                 CodeEditor(text: code,
                            shouldSelectAll: $viewModel.shouldSelectAll,
+                           shouldHideKeyboard: $viewModel.shouldHideKeyboard,
                            language: viewModel.selectedLanguage)
             }
         }

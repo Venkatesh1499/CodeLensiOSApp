@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Languages
-//
-//  Created by Venkatesh Nimmalapudi on 15/07/26.
-//
-
 import SwiftUI
 
 struct LanguageSelectionView: View {

@@ -72,406 +72,22 @@
         "extension": ".rb"
     },
     {
-        "name": "PHP",
-        "image": "PHP",
+        "name": "1C",
+        "image": "1C",
         "isAvailable": false,
-        "extension": ".php"
+        "extension": ".bsl"
     },
     {
-        "name": "Dart",
-        "image": "Dart",
+        "name": "ABNF",
+        "image": "ABNF",
         "isAvailable": false,
-        "extension": ".dart"
+        "extension": ".abnf"
     },
     {
-        "name": "Scala",
-        "image": "Scala",
+        "name": "Access Log",
+        "image": "AccessLog",
         "isAvailable": false,
-        "extension": ".scala"
-    },
-    {
-        "name": "R",
-        "image": "R",
-        "isAvailable": false,
-        "extension": ".r"
-    },
-    {
-        "name": "Perl",
-        "image": "Perl",
-        "isAvailable": false,
-        "extension": ".pl"
-    },
-    {
-        "name": "Lua",
-        "image": "Lua",
-        "isAvailable": false,
-        "extension": ".lua"
-    },
-    {
-        "name": "Shell",
-        "image": "Shell",
-        "isAvailable": false,
-        "extension": ".sh"
-    },
-    {
-        "name": "PowerShell",
-        "image": "PowerShell",
-        "isAvailable": false,
-        "extension": ".ps1"
-    },
-    {
-        "name": "Objective-C",
-        "image": "ObjectiveC",
-        "isAvailable": false,
-        "extension": ".m"
-    },
-    {
-        "name": "Haskell",
-        "image": "Haskell",
-        "isAvailable": false,
-        "extension": ".hs"
-    },
-    {
-        "name": "Elixir",
-        "image": "Elixir",
-        "isAvailable": false,
-        "extension": ".ex"
-    },
-    {
-        "name": "Clojure",
-        "image": "Clojure",
-        "isAvailable": false,
-        "extension": ".clj"
-    },
-    {
-        "name": "F#",
-        "image": "FSharp",
-        "isAvailable": false,
-        "extension": ".fs"
-    },
-    {
-        "name": "Julia",
-        "image": "Julia",
-        "isAvailable": false,
-        "extension": ".jl"
-    },
-    {
-        "name": "MATLAB",
-        "image": "MATLAB",
-        "isAvailable": false,
-        "extension": ".m"
-    },
-    {
-        "name": "Groovy",
-        "image": "Groovy",
-        "isAvailable": false,
-        "extension": ".groovy"
-    },
-    {
-        "name": "Visual Basic",
-        "image": "VB",
-        "isAvailable": false,
-        "extension": ".vb"
-    },
-    {
-        "name": "Fortran",
-        "image": "Fortran",
-        "isAvailable": false,
-        "extension": ".f90"
-    },
-    {
-        "name": "COBOL",
-        "image": "COBOL",
-        "isAvailable": false,
-        "extension": ".cbl"
-    },
-    {
-        "name": "Zig",
-        "image": "Zig",
-        "isAvailable": false,
-        "extension": ".zig"
-    },
-    {
-        "name": "Nim",
-        "image": "Nim",
-        "isAvailable": false,
-        "extension": ".nim"
-    },
-    {
-        "name": "OCaml",
-        "image": "OCaml",
-        "isAvailable": false,
-        "extension": ".ml"
-    },
-    {
-        "name": "Erlang",
-        "image": "Erlang",
-        "isAvailable": false,
-        "extension": ".erl"
-    },
-    {
-        "name": "Ada",
-        "image": "Ada",
-        "isAvailable": false,
-        "extension": ".adb"
-    },
-    {
-        "name": "Pascal",
-        "image": "Pascal",
-        "isAvailable": false,
-        "extension": ".pas"
-    },
-    {
-        "name": "Delphi",
-        "image": "Delphi",
-        "isAvailable": false,
-        "extension": ".pas"
-    },
-    {
-        "name": "Assembly",
-        "image": "Assembly",
-        "isAvailable": false,
-        "extension": ".asm"
-    },
-    {
-        "name": "Solidity",
-        "image": "Solidity",
-        "isAvailable": false,
-        "extension": ".sol"
-    },
-    {
-        "name": "V",
-        "image": "V",
-        "isAvailable": false,
-        "extension": ".v"
-    },
-    {
-        "name": "Crystal",
-        "image": "Crystal",
-        "isAvailable": false,
-        "extension": ".cr"
-    },
-    {
-        "name": "ReasonML",
-        "image": "ReasonML",
-        "isAvailable": false,
-        "extension": ".re"
-    },
-    {
-        "name": "Scheme",
-        "image": "Scheme",
-        "isAvailable": false,
-        "extension": ".scm"
-    },
-    {
-        "name": "Common Lisp",
-        "image": "CommonLisp",
-        "isAvailable": false,
-        "extension": ".lisp"
-    },
-    {
-        "name": "Prolog",
-        "image": "Prolog",
-        "isAvailable": false,
-        "extension": ".pl"
-    },
-    {
-        "name": "Tcl",
-        "image": "Tcl",
-        "isAvailable": false,
-        "extension": ".tcl"
-    },
-    {
-        "name": "Awk",
-        "image": "Awk",
-        "isAvailable": false,
-        "extension": ".awk"
-    },
-    {
-        "name": "Smalltalk",
-        "image": "Smalltalk",
-        "isAvailable": false,
-        "extension": ".st"
-    },
-    {
-        "name": "Racket",
-        "image": "Racket",
-        "isAvailable": false,
-        "extension": ".rkt"
-    },
-    {
-        "name": "D",
-        "image": "D",
-        "isAvailable": false,
-        "extension": ".d"
-    },
-    {
-        "name": "SAS",
-        "image": "SAS",
-        "isAvailable": false,
-        "extension": ".sas"
-    },
-    {
-        "name": "ABAP",
-        "image": "ABAP",
-        "isAvailable": false,
-        "extension": ".abap"
-    },
-    {
-        "name": "Apex",
-        "image": "Apex",
-        "isAvailable": false,
-        "extension": ".cls"
-    },
-    {
-        "name": "Hack",
-        "image": "Hack",
-        "isAvailable": false,
-        "extension": ".hack"
-    },
-    {
-        "name": "Elm",
-        "image": "Elm",
-        "isAvailable": false,
-        "extension": ".elm"
-    },
-    {
-        "name": "CoffeeScript",
-        "image": "CoffeeScript",
-        "isAvailable": false,
-        "extension": ".coffee"
-    },
-    {
-        "name": "Bash",
-        "image": "Bash",
-        "isAvailable": false,
-        "extension": ".bash"
-    },
-    {
-        "name": "Fish",
-        "image": "Fish",
-        "isAvailable": false,
-        "extension": ".fish"
-    },
-    {
-        "name": "Lean",
-        "image": "Lean",
-        "isAvailable": false,
-        "extension": ".lean"
-    },
-    {
-        "name": "VHDL",
-        "image": "VHDL",
-        "isAvailable": false,
-        "extension": ".vhd"
-    },
-    {
-        "name": "Verilog",
-        "image": "Verilog",
-        "isAvailable": false,
-        "extension": ".v"
-    },
-    {
-        "name": "Ballerina",
-        "image": "Ballerina",
-        "isAvailable": false,
-        "extension": ".bal"
-    },
-    {
-        "name": "Pony",
-        "image": "Pony",
-        "isAvailable": false,
-        "extension": ".pony"
-    },
-    {
-        "name": "Io",
-        "image": "Io",
-        "isAvailable": false,
-        "extension": ".io"
-    },
-    {
-        "name": "Mercury",
-        "image": "Mercury",
-        "isAvailable": false,
-        "extension": ".m"
-    },
-    {
-        "name": "Idris",
-        "image": "Idris",
-        "isAvailable": false,
-        "extension": ".idr"
-    },
-    {
-        "name": "Agda",
-        "image": "Agda",
-        "isAvailable": false,
-        "extension": ".agda"
-    },
-    {
-        "name": "Chapel",
-        "image": "Chapel",
-        "isAvailable": false,
-        "extension": ".chpl"
-    },
-    {
-        "name": "X10",
-        "image": "X10",
-        "isAvailable": false,
-        "extension": ".x10"
-    },
-    {
-        "name": "Monkey C",
-        "image": "MonkeyC",
-        "isAvailable": false,
-        "extension": ".mc"
-    },
-    {
-        "name": "Icon",
-        "image": "Icon",
-        "isAvailable": false,
-        "extension": ".icn"
-    },
-    {
-        "name": "SNOBOL",
-        "image": "SNOBOL",
-        "isAvailable": false,
-        "extension": ".sno"
-    },
-    {
-        "name": "PostScript",
-        "image": "PostScript",
-        "isAvailable": false,
-        "extension": ".ps"
-    },
-    {
-        "name": "AutoHotkey",
-        "image": "AutoHotkey",
-        "isAvailable": false,
-        "extension": ".ahk"
-    },
-    {
-        "name": "OpenCL",
-        "image": "OpenCL",
-        "isAvailable": false,
-        "extension": ".cl"
-    },
-    {
-        "name": "OpenEdge ABL",
-        "image": "OpenEdgeABL",
-        "isAvailable": false,
-        "extension": ".p"
-    },
-    {
-        "name": "PL/SQL",
-        "image": "PLSQL",
-        "isAvailable": false,
-        "extension": ".sql"
-    },
-    {
-        "name": "Standard ML",
-        "image": "StandardML",
-        "isAvailable": false,
-        "extension": ".sml"
+        "extension": ".log"
     },
     {
         "name": "ActionScript",
@@ -480,58 +96,778 @@
         "extension": ".as"
     },
     {
-        "name": "ColdFusion",
-        "image": "ColdFusion",
+        "name": "Ada",
+        "image": "Ada",
         "isAvailable": false,
-        "extension": ".cfm"
+        "extension": ".adb"
     },
     {
-        "name": "Red",
-        "image": "Red",
+        "name": "AngelScript",
+        "image": "AngelScript",
         "isAvailable": false,
-        "extension": ".red"
+        "extension": ".as"
     },
     {
-        "name": "Ring",
-        "image": "Ring",
+        "name": "Apache",
+        "image": "Apache",
         "isAvailable": false,
-        "extension": ".ring"
+        "extension": ".conf"
     },
     {
-        "name": "Janus",
-        "image": "Janus",
+        "name": "AppleScript",
+        "image": "AppleScript",
         "isAvailable": false,
-        "extension": ".janus"
+        "extension": ".applescript"
     },
     {
-        "name": "Rebol",
-        "image": "Rebol",
+        "name": "Arcade",
+        "image": "Arcade",
         "isAvailable": false,
-        "extension": ".reb"
+        "extension": ".arcade"
     },
     {
-        "name": "Seed7",
-        "image": "Seed7",
+        "name": "Arduino",
+        "image": "Arduino",
         "isAvailable": false,
-        "extension": ".sd7"
+        "extension": ".ino"
     },
     {
-        "name": "Harbour",
-        "image": "Harbour",
+        "name": "ARM Assembly",
+        "image": "ARMASM",
         "isAvailable": false,
-        "extension": ".prg"
+        "extension": ".s"
     },
     {
-        "name": "J",
-        "image": "J",
+        "name": "AsciiDoc",
+        "image": "AsciiDoc",
         "isAvailable": false,
-        "extension": ".ijs"
+        "extension": ".adoc"
     },
     {
-        "name": "K",
-        "image": "K",
+        "name": "AspectJ",
+        "image": "AspectJ",
         "isAvailable": false,
-        "extension": ".k"
+        "extension": ".aj"
+    },
+    {
+        "name": "AutoHotkey",
+        "image": "AutoHotkey",
+        "isAvailable": false,
+        "extension": ".ahk"
+    },
+    {
+        "name": "AutoIt",
+        "image": "AutoIt",
+        "isAvailable": false,
+        "extension": ".au3"
+    },
+    {
+        "name": "AVR Assembly",
+        "image": "AVRASM",
+        "isAvailable": false,
+        "extension": ".asm"
+    },
+    {
+        "name": "AWK",
+        "image": "AWK",
+        "isAvailable": false,
+        "extension": ".awk"
+    },
+    {
+        "name": "Axapta",
+        "image": "Axapta",
+        "isAvailable": false,
+        "extension": ".xpp"
+    },
+    {
+        "name": "Bash",
+        "image": "Bash",
+        "isAvailable": false,
+        "extension": ".sh"
+    },
+    {
+        "name": "BASIC",
+        "image": "BASIC",
+        "isAvailable": false,
+        "extension": ".bas"
+    },
+    {
+        "name": "BNF",
+        "image": "BNF",
+        "isAvailable": false,
+        "extension": ".bnf"
+    },
+    {
+        "name": "Brainfuck",
+        "image": "Brainfuck",
+        "isAvailable": false,
+        "extension": ".bf"
+    },
+    {
+        "name": "CAL",
+        "image": "CAL",
+        "isAvailable": false,
+        "extension": ".cal"
+    },
+    {
+        "name": "Cap'n Proto",
+        "image": "CapnProto",
+        "isAvailable": false,
+        "extension": ".capnp"
+    },
+    {
+        "name": "Ceylon",
+        "image": "Ceylon",
+        "isAvailable": false,
+        "extension": ".ceylon"
+    },
+    {
+        "name": "Clean",
+        "image": "Clean",
+        "isAvailable": false,
+        "extension": ".icl"
+    },
+    {
+        "name": "Clojure",
+        "image": "Clojure",
+        "isAvailable": false,
+        "extension": ".clj"
+    },
+    {
+        "name": "Clojure REPL",
+        "image": "ClojureREPL",
+        "isAvailable": false,
+        "extension": ".clj"
+    },
+    {
+        "name": "CMake",
+        "image": "CMake",
+        "isAvailable": false,
+        "extension": ".cmake"
+    },
+    {
+        "name": "CoffeeScript",
+        "image": "CoffeeScript",
+        "isAvailable": false,
+        "extension": ".coffee"
+    },
+    {
+        "name": "Coq",
+        "image": "Coq",
+        "isAvailable": false,
+        "extension": ".v"
+    },
+    {
+        "name": "Cache ObjectScript",
+        "image": "COS",
+        "isAvailable": false,
+        "extension": ".cls"
+    },
+    {
+        "name": "CRM Shell",
+        "image": "CRMSH",
+        "isAvailable": false,
+        "extension": ".crmsh"
+    },
+    {
+        "name": "Crystal",
+        "image": "Crystal",
+        "isAvailable": false,
+        "extension": ".cr"
+    },
+    {
+        "name": "CSP",
+        "image": "CSP",
+        "isAvailable": false,
+        "extension": ".csp"
+    },
+    {
+        "name": "CSS",
+        "image": "CSS",
+        "isAvailable": false,
+        "extension": ".css"
+    },
+    {
+        "name": "D",
+        "image": "D",
+        "isAvailable": false,
+        "extension": ".d"
+    },
+    {
+        "name": "Dart",
+        "image": "Dart",
+        "isAvailable": false,
+        "extension": ".dart"
+    },
+    {
+        "name": "Delphi",
+        "image": "Delphi",
+        "isAvailable": false,
+        "extension": ".pas"
+    },
+    {
+        "name": "Diff",
+        "image": "Diff",
+        "isAvailable": false,
+        "extension": ".diff"
+    },
+    {
+        "name": "Django",
+        "image": "Django",
+        "isAvailable": false,
+        "extension": ".html"
+    },
+    {
+        "name": "DNS Zone",
+        "image": "DNS",
+        "isAvailable": false,
+        "extension": ".zone"
+    },
+    {
+        "name": "Dockerfile",
+        "image": "Dockerfile",
+        "isAvailable": false,
+        "extension": "Dockerfile"
+    },
+    {
+        "name": "DOS Batch",
+        "image": "DOS",
+        "isAvailable": false,
+        "extension": ".bat"
+    },
+    {
+        "name": "DSConfig",
+        "image": "DSConfig",
+        "isAvailable": false,
+        "extension": ".dsconfig"
+    },
+    {
+        "name": "Device Tree Source",
+        "image": "DTS",
+        "isAvailable": false,
+        "extension": ".dts"
+    },
+    {
+        "name": "Dust",
+        "image": "Dust",
+        "isAvailable": false,
+        "extension": ".dust"
+    },
+    {
+        "name": "EBNF",
+        "image": "EBNF",
+        "isAvailable": false,
+        "extension": ".ebnf"
+    },
+    {
+        "name": "Elixir",
+        "image": "Elixir",
+        "isAvailable": false,
+        "extension": ".ex"
+    },
+    {
+        "name": "Elm",
+        "image": "Elm",
+        "isAvailable": false,
+        "extension": ".elm"
+    },
+    {
+        "name": "Embedded Ruby",
+        "image": "ERB",
+        "isAvailable": false,
+        "extension": ".erb"
+    },
+    {
+        "name": "Erlang",
+        "image": "Erlang",
+        "isAvailable": false,
+        "extension": ".erl"
+    },
+    {
+        "name": "Erlang REPL",
+        "image": "ErlangREPL",
+        "isAvailable": false,
+        "extension": ".erl"
+    },
+    {
+        "name": "Excel Formula",
+        "image": "Excel",
+        "isAvailable": false,
+        "extension": ".xlsx"
+    },
+    {
+        "name": "FIX",
+        "image": "FIX",
+        "isAvailable": false,
+        "extension": ".fix"
+    },
+    {
+        "name": "Flix",
+        "image": "Flix",
+        "isAvailable": false,
+        "extension": ".flix"
+    },
+    {
+        "name": "Fortran",
+        "image": "Fortran",
+        "isAvailable": false,
+        "extension": ".f90"
+    },
+    {
+        "name": "F#",
+        "image": "FSharp",
+        "isAvailable": false,
+        "extension": ".fs"
+    },
+    {
+        "name": "GAMS",
+        "image": "GAMS",
+        "isAvailable": false,
+        "extension": ".gms"
+    },
+    {
+        "name": "GAUSS",
+        "image": "GAUSS",
+        "isAvailable": false,
+        "extension": ".gss"
+    },
+    {
+        "name": "G-Code",
+        "image": "GCode",
+        "isAvailable": false,
+        "extension": ".gcode"
+    },
+    {
+        "name": "Gherkin",
+        "image": "Gherkin",
+        "isAvailable": false,
+        "extension": ".feature"
+    },
+    {
+        "name": "GLSL",
+        "image": "GLSL",
+        "isAvailable": false,
+        "extension": ".glsl"
+    },
+    {
+        "name": "GameMaker Language",
+        "image": "GML",
+        "isAvailable": false,
+        "extension": ".gml"
+    },
+    {
+        "name": "Golo",
+        "image": "Golo",
+        "isAvailable": false,
+        "extension": ".golo"
+    },
+    {
+        "name": "Gradle",
+        "image": "Gradle",
+        "isAvailable": false,
+        "extension": ".gradle"
+    },
+    {
+        "name": "GraphQL",
+        "image": "GraphQL",
+        "isAvailable": false,
+        "extension": ".graphql"
+    },
+    {
+        "name": "Groovy",
+        "image": "Groovy",
+        "isAvailable": false,
+        "extension": ".groovy"
+    },
+    {
+        "name": "Haml",
+        "image": "Haml",
+        "isAvailable": false,
+        "extension": ".haml"
+    },
+    {
+        "name": "Handlebars",
+        "image": "Handlebars",
+        "isAvailable": false,
+        "extension": ".hbs"
+    },
+    {
+        "name": "Haskell",
+        "image": "Haskell",
+        "isAvailable": false,
+        "extension": ".hs"
+    },
+    {
+        "name": "Haxe",
+        "image": "Haxe",
+        "isAvailable": false,
+        "extension": ".hx"
+    },
+    {
+        "name": "Hot Soup Processor",
+        "image": "HSP",
+        "isAvailable": false,
+        "extension": ".hsp"
+    },
+    {
+        "name": "HTTP",
+        "image": "HTTP",
+        "isAvailable": false,
+        "extension": ".http"
+    },
+    {
+        "name": "Hy",
+        "image": "Hy",
+        "isAvailable": false,
+        "extension": ".hy"
+    },
+    {
+        "name": "Inform 7",
+        "image": "Inform7",
+        "isAvailable": false,
+        "extension": ".ni"
+    },
+    {
+        "name": "INI",
+        "image": "INI",
+        "isAvailable": false,
+        "extension": ".ini"
+    },
+    {
+        "name": "IRPF90",
+        "image": "IRPF90",
+        "isAvailable": false,
+        "extension": ".irp.f"
+    },
+    {
+        "name": "ISBL",
+        "image": "ISBL",
+        "isAvailable": false,
+        "extension": ".isbl"
+    },
+    {
+        "name": "JBoss CLI",
+        "image": "JBossCLI",
+        "isAvailable": false,
+        "extension": ".cli"
+    },
+    {
+        "name": "JSON",
+        "image": "JSON",
+        "isAvailable": false,
+        "extension": ".json"
+    },
+    {
+        "name": "Julia",
+        "image": "Julia",
+        "isAvailable": false,
+        "extension": ".jl"
+    },
+    {
+        "name": "Julia REPL",
+        "image": "JuliaREPL",
+        "isAvailable": false,
+        "extension": ".jl"
+    },
+    {
+        "name": "Lasso",
+        "image": "Lasso",
+        "isAvailable": false,
+        "extension": ".lasso"
+    },
+    {
+        "name": "LaTeX",
+        "image": "LaTeX",
+        "isAvailable": false,
+        "extension": ".tex"
+    },
+    {
+        "name": "LDIF",
+        "image": "LDIF",
+        "isAvailable": false,
+        "extension": ".ldif"
+    },
+    {
+        "name": "Leaf",
+        "image": "Leaf",
+        "isAvailable": false,
+        "extension": ".leaf"
+    },
+    {
+        "name": "LESS",
+        "image": "LESS",
+        "isAvailable": false,
+        "extension": ".less"
+    },
+    {
+        "name": "Lisp",
+        "image": "Lisp",
+        "isAvailable": false,
+        "extension": ".lisp"
+    },
+    {
+        "name": "LiveCode Server",
+        "image": "LiveCode",
+        "isAvailable": false,
+        "extension": ".livecodescript"
+    },
+    {
+        "name": "LiveScript",
+        "image": "LiveScript",
+        "isAvailable": false,
+        "extension": ".ls"
+    },
+    {
+        "name": "LLVM IR",
+        "image": "LLVM",
+        "isAvailable": false,
+        "extension": ".ll"
+    },
+    {
+        "name": "LSL",
+        "image": "LSL",
+        "isAvailable": false,
+        "extension": ".lsl"
+    },
+    {
+        "name": "Makefile",
+        "image": "Makefile",
+        "isAvailable": false,
+        "extension": "Makefile"
+    },
+    {
+        "name": "Markdown",
+        "image": "Markdown",
+        "isAvailable": false,
+        "extension": ".md"
+    },
+    {
+        "name": "Mathematica",
+        "image": "Mathematica",
+        "isAvailable": false,
+        "extension": ".nb"
+    },
+    {
+        "name": "MATLAB",
+        "image": "MATLAB",
+        "isAvailable": false,
+        "extension": ".m"
+    },
+    {
+        "name": "Maxima",
+        "image": "Maxima",
+        "isAvailable": false,
+        "extension": ".mac"
+    },
+    {
+        "name": "MEL",
+        "image": "MEL",
+        "isAvailable": false,
+        "extension": ".mel"
+    },
+    {
+        "name": "Mercury",
+        "image": "Mercury",
+        "isAvailable": false,
+        "extension": ".m"
+    },
+    {
+        "name": "MIPS Assembly",
+        "image": "MIPSASM",
+        "isAvailable": false,
+        "extension": ".asm"
+    },
+    {
+        "name": "Mizar",
+        "image": "Mizar",
+        "isAvailable": false,
+        "extension": ".miz"
+    },
+    {
+        "name": "Mojolicious",
+        "image": "Mojolicious",
+        "isAvailable": false,
+        "extension": ".pm"
+    },
+    {
+        "name": "Monkey",
+        "image": "Monkey",
+        "isAvailable": false,
+        "extension": ".monkey"
+    },
+    {
+        "name": "MoonScript",
+        "image": "MoonScript",
+        "isAvailable": false,
+        "extension": ".moon"
+    },
+    {
+        "name": "N1QL",
+        "image": "N1QL",
+        "isAvailable": false,
+        "extension": ".n1ql"
+    },
+    {
+        "name": "NestedText",
+        "image": "NestedText",
+        "isAvailable": false,
+        "extension": ".nt"
+    },
+    {
+        "name": "Nginx",
+        "image": "Nginx",
+        "isAvailable": false,
+        "extension": ".conf"
+    },
+    {
+        "name": "Nim",
+        "image": "Nim",
+        "isAvailable": false,
+        "extension": ".nim"
+    },
+    {
+        "name": "Nix",
+        "image": "Nix",
+        "isAvailable": false,
+        "extension": ".nix"
+    },
+    {
+        "name": "Node REPL",
+        "image": "NodeREPL",
+        "isAvailable": false,
+        "extension": ".js"
+    },
+    {
+        "name": "NSIS",
+        "image": "NSIS",
+        "isAvailable": false,
+        "extension": ".nsi"
+    },
+    {
+        "name": "Objective-C",
+        "image": "ObjectiveC",
+        "isAvailable": false,
+        "extension": ".m"
+    },
+    {
+        "name": "OCaml",
+        "image": "OCaml",
+        "isAvailable": false,
+        "extension": ".ml"
+    },
+    {
+        "name": "OpenSCAD",
+        "image": "OpenSCAD",
+        "isAvailable": false,
+        "extension": ".scad"
+    },
+    {
+        "name": "Oxygene",
+        "image": "Oxygene",
+        "isAvailable": false,
+        "extension": ".pas"
+    },
+    {
+        "name": "Parser 3",
+        "image": "Parser3",
+        "isAvailable": false,
+        "extension": ".p"
+    },
+    {
+        "name": "Perl",
+        "image": "Perl",
+        "isAvailable": false,
+        "extension": ".pl"
+    },
+    {
+        "name": "OpenBSD PF",
+        "image": "PF",
+        "isAvailable": false,
+        "extension": ".pf"
+    },
+    {
+        "name": "PostgreSQL",
+        "image": "PostgreSQL",
+        "isAvailable": false,
+        "extension": ".sql"
+    },
+    {
+        "name": "PHP",
+        "image": "PHP",
+        "isAvailable": false,
+        "extension": ".php"
+    },
+    {
+        "name": "PHP Template",
+        "image": "PHPTemplate",
+        "isAvailable": false,
+        "extension": ".phtml"
+    },
+    {
+        "name": "Plain Text",
+        "image": "PlainText",
+        "isAvailable": false,
+        "extension": ".txt"
+    },
+    {
+        "name": "Pony",
+        "image": "Pony",
+        "isAvailable": false,
+        "extension": ".pony"
+    },
+    {
+        "name": "PowerShell",
+        "image": "PowerShell",
+        "isAvailable": false,
+        "extension": ".ps1"
+    },
+    {
+        "name": "Processing",
+        "image": "Processing",
+        "isAvailable": false,
+        "extension": ".pde"
+    },
+    {
+        "name": "Profile",
+        "image": "Profile",
+        "isAvailable": false,
+        "extension": ".prof"
+    },
+    {
+        "name": "Prolog",
+        "image": "Prolog",
+        "isAvailable": false,
+        "extension": ".pl"
+    },
+    {
+        "name": "Properties",
+        "image": "Properties",
+        "isAvailable": false,
+        "extension": ".properties"
+    },
+    {
+        "name": "Protocol Buffers",
+        "image": "Protobuf",
+        "isAvailable": false,
+        "extension": ".proto"
+    },
+    {
+        "name": "Puppet",
+        "image": "Puppet",
+        "isAvailable": false,
+        "extension": ".pp"
+    },
+    {
+        "name": "PureBasic",
+        "image": "PureBasic",
+        "isAvailable": false,
+        "extension": ".pb"
+    },
+    {
+        "name": "Python REPL",
+        "image": "PythonREPL",
+        "isAvailable": false,
+        "extension": ".py"
     },
     {
         "name": "Q",
@@ -540,75 +876,267 @@
         "extension": ".q"
     },
     {
-        "name": "Factor",
-        "image": "Factor",
+        "name": "QML",
+        "image": "QML",
         "isAvailable": false,
-        "extension": ".factor"
+        "extension": ".qml"
     },
     {
-        "name": "NetLogo",
-        "image": "NetLogo",
+        "name": "R",
+        "image": "R",
         "isAvailable": false,
-        "extension": ".nlogo"
+        "extension": ".r"
     },
     {
-        "name": "PureScript",
-        "image": "PureScript",
+        "name": "ReasonML",
+        "image": "ReasonML",
         "isAvailable": false,
-        "extension": ".purs"
+        "extension": ".re"
     },
     {
-        "name": "Ur/Web",
-        "image": "UrWeb",
+        "name": "RenderMan RIB",
+        "image": "RIB",
         "isAvailable": false,
-        "extension": ".ur"
+        "extension": ".rib"
     },
     {
-        "name": "Fantom",
-        "image": "Fantom",
+        "name": "Roboconf",
+        "image": "Roboconf",
         "isAvailable": false,
-        "extension": ".fan"
+        "extension": ".rcf"
     },
     {
-        "name": "Vale",
-        "image": "Vale",
+        "name": "RouterOS",
+        "image": "RouterOS",
         "isAvailable": false,
-        "extension": ".vale"
+        "extension": ".rsc"
     },
     {
-        "name": "Unison",
-        "image": "Unison",
+        "name": "RSL",
+        "image": "RSL",
         "isAvailable": false,
-        "extension": ".u"
+        "extension": ".sl"
     },
     {
-        "name": "Odin",
-        "image": "Odin",
+        "name": "Rules Language",
+        "image": "RulesLanguage",
         "isAvailable": false,
-        "extension": ".odin"
+        "extension": ".rules"
     },
     {
-        "name": "Bosque",
-        "image": "Bosque",
+        "name": "SAS",
+        "image": "SAS",
         "isAvailable": false,
-        "extension": ".bsq"
+        "extension": ".sas"
     },
     {
-        "name": "Yorick",
-        "image": "Yorick",
+        "name": "Scala",
+        "image": "Scala",
         "isAvailable": false,
-        "extension": ".i"
+        "extension": ".scala"
     },
     {
-        "name": "Wolfram Language",
-        "image": "Wolfram",
+        "name": "Scheme",
+        "image": "Scheme",
         "isAvailable": false,
-        "extension": ".wl"
+        "extension": ".scm"
     },
     {
-        "name": "Eiffel",
-        "image": "Eiffel",
+        "name": "Scilab",
+        "image": "Scilab",
         "isAvailable": false,
-        "extension": ".e"
+        "extension": ".sci"
+    },
+    {
+        "name": "SCSS",
+        "image": "SCSS",
+        "isAvailable": false,
+        "extension": ".scss"
+    },
+    {
+        "name": "Shell",
+        "image": "Shell",
+        "isAvailable": false,
+        "extension": ".sh"
+    },
+    {
+        "name": "Smali",
+        "image": "Smali",
+        "isAvailable": false,
+        "extension": ".smali"
+    },
+    {
+        "name": "Smalltalk",
+        "image": "Smalltalk",
+        "isAvailable": false,
+        "extension": ".st"
+    },
+    {
+        "name": "Standard ML",
+        "image": "SML",
+        "isAvailable": false,
+        "extension": ".sml"
+    },
+    {
+        "name": "SQF",
+        "image": "SQF",
+        "isAvailable": false,
+        "extension": ".sqf"
+    },
+    {
+        "name": "SQL",
+        "image": "SQL",
+        "isAvailable": false,
+        "extension": ".sql"
+    },
+    {
+        "name": "Stan",
+        "image": "Stan",
+        "isAvailable": false,
+        "extension": ".stan"
+    },
+    {
+        "name": "Stata",
+        "image": "Stata",
+        "isAvailable": false,
+        "extension": ".do"
+    },
+    {
+        "name": "STEP 21",
+        "image": "STEP21",
+        "isAvailable": false,
+        "extension": ".stp"
+    },
+    {
+        "name": "Stylus",
+        "image": "Stylus",
+        "isAvailable": false,
+        "extension": ".styl"
+    },
+    {
+        "name": "SubUnit",
+        "image": "SubUnit",
+        "isAvailable": false,
+        "extension": ".tap"
+    },
+    {
+        "name": "TaggerScript",
+        "image": "TaggerScript",
+        "isAvailable": false,
+        "extension": ".tag"
+    },
+    {
+        "name": "Tcl",
+        "image": "Tcl",
+        "isAvailable": false,
+        "extension": ".tcl"
+    },
+    {
+        "name": "Thrift",
+        "image": "Thrift",
+        "isAvailable": false,
+        "extension": ".thrift"
+    },
+    {
+        "name": "TP",
+        "image": "TP",
+        "isAvailable": false,
+        "extension": ".tp"
+    },
+    {
+        "name": "Twig",
+        "image": "Twig",
+        "isAvailable": false,
+        "extension": ".twig"
+    },
+    {
+        "name": "Vala",
+        "image": "Vala",
+        "isAvailable": false,
+        "extension": ".vala"
+    },
+    {
+        "name": "Visual Basic .NET",
+        "image": "VBNet",
+        "isAvailable": false,
+        "extension": ".vb"
+    },
+    {
+        "name": "VBScript",
+        "image": "VBScript",
+        "isAvailable": false,
+        "extension": ".vbs"
+    },
+    {
+        "name": "VBScript HTML",
+        "image": "VBScriptHTML",
+        "isAvailable": false,
+        "extension": ".html"
+    },
+    {
+        "name": "Verilog",
+        "image": "Verilog",
+        "isAvailable": false,
+        "extension": ".v"
+    },
+    {
+        "name": "VHDL",
+        "image": "VHDL",
+        "isAvailable": false,
+        "extension": ".vhd"
+    },
+    {
+        "name": "Vim Script",
+        "image": "Vim",
+        "isAvailable": false,
+        "extension": ".vim"
+    },
+    {
+        "name": "WebAssembly",
+        "image": "WASM",
+        "isAvailable": false,
+        "extension": ".wasm"
+    },
+    {
+        "name": "Wren",
+        "image": "Wren",
+        "isAvailable": false,
+        "extension": ".wren"
+    },
+    {
+        "name": "x86 Assembly",
+        "image": "X86ASM",
+        "isAvailable": false,
+        "extension": ".asm"
+    },
+    {
+        "name": "XL",
+        "image": "XL",
+        "isAvailable": false,
+        "extension": ".xl"
+    },
+    {
+        "name": "XML",
+        "image": "XML",
+        "isAvailable": false,
+        "extension": ".xml"
+    },
+    {
+        "name": "XQuery",
+        "image": "XQuery",
+        "isAvailable": false,
+        "extension": ".xq"
+    },
+    {
+        "name": "YAML",
+        "image": "YAML",
+        "isAvailable": false,
+        "extension": ".yaml"
+    },
+    {
+        "name": "Zephir",
+        "image": "Zephir",
+        "isAvailable": false,
+        "extension": ".zep"
     }
 ]

@@ -38,7 +38,7 @@ struct LoginView: View {
                                       value: $viewModel.email,
                                       isTouched: $viewModel.isEmailTouched,
                                       error: viewModel.email.validate(for: [.required, .email]))
-                        .onChange(of: viewModel.email) { _, _ in
+                        .onChange(of: viewModel.email) { 
                             viewModel.isEmailTouched = true
                         }
                         
@@ -48,7 +48,7 @@ struct LoginView: View {
                                       value: $viewModel.password,
                                       isTouched: $viewModel.isPasswordTouched,
                                       error: viewModel.password.validate(for: [.required, .password]))
-                        .onChange(of: viewModel.password) { _, _ in
+                        .onChange(of: viewModel.password) { 
                             viewModel.isPasswordTouched = true
                         }
                         
