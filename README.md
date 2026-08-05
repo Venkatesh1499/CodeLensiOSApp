@@ -147,8 +147,8 @@ CodeLens simplifies the way developers interact with source code by combining AI
 Add screenshots showcasing:
 
 * Home Screen
-<img alt="Simulator Screenshot - iPhone 17 Pro - 2026-08-05 at 07 56 57" src="https://github.com/user-attachments/assets/1091bb5c-534f-4477-aa54-c0a44d115cf5" />
-<img width="1206" height="2622" alt="Simulator Screenshot - iPhone 17 Pro - 2026-08-05 at 07 58 03" src="https://github.com/user-attachments/assets/e659a4dd-021b-4d1c-b501-8d5e1f1bc8b5" width="220"/>
+<img alt="Simulator Screenshot - iPhone 17 Pro - 2026-08-05 at 07 56 57" src="https://github.com/user-attachments/assets/1091bb5c-534f-4477-aa54-c0a44d115cf5" width="220"/>
+<img alt="Simulator Screenshot - iPhone 17 Pro - 2026-08-05 at 07 58 03" src="https://github.com/user-attachments/assets/e659a4dd-021b-4d1c-b501-8d5e1f1bc8b5" width="220"/>
 
 * Multi-language Selection
 <img alt="Simulator Screenshot - iPhone 17 Pro - 2026-08-05 at 07 58 50" src="https://github.com/user-attachments/assets/363b1761-eef6-40a2-96bc-5112d4d3e897" width="220"/>
