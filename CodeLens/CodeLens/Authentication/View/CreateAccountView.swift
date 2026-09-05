@@ -90,8 +90,7 @@ struct CreateAccountView: View {
                             viewModel.isLoading = true
                         }
                         AuthenticationManager.shared.signUp(name: viewModel.name, email: viewModel.email, password: viewModel.password) { error, result in
-                            // delay is just to show case the animations that will happen and nothing else
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            DispatchQueue.main.async {
                                 if error != nil || result == "Error during signIn" {
                                     viewModel.shouldShowError = true
                                 } else {
