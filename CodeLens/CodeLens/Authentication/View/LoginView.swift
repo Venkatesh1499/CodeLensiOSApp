@@ -65,9 +65,9 @@ struct LoginView: View {
                                 withAnimation {
                                     viewModel.isLoading.toggle()
                                 }
-                                // delay is just to show case the animations that will happen and nothing else
+                                
                                 AuthenticationManager.shared.login(email: viewModel.email, password: viewModel.password) { error, result in
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                    DispatchQueue.main.async {
                                         if error != nil || result == "Error during Login" {
                                             viewModel.shouldShowError = true
                                         } else {
